@@ -1,2 +1,3 @@
 # kvikFeedbackProsjekt
- Feedback-form for kvik
+
+# Feedback-form for kvik, server included
