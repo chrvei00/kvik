@@ -1,37 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Meta -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Title and icon -->
-    <title>Feedback</title>
-    <link rel="icon" href="./images/logo_kvik.png" type="image" />
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="form.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Kvik feedback-form</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+      <h2>Contact</h2>
     </div>
-    <div class="container">
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
       <form
-        action="send"
+        id="feedback-form"
+        class="form"
+        action="submit"
         method="POST"
-        id="feedbackForm"
+        role="form"
         enctype="multipart/form-data"
       >
-        <div class="form-group">
-          <h1>Form design under progress</h1>
+        <div class="form-group mt-2">
+          <label class="form-label" for="name">Your Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="name"
+            tabindex="1"
+            required
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label class="form-label" for="email">Your Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="email"
+            tabindex="2"
+            required
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label class="form-label" for="subject">Subject</label>
+          <input
+            type="text"
+            class="form-control"
+            id="subject"
+            name="subject"
+            placeholder="subject"
+            tabindex="3"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label class="form-label" for="message">Message</label>
+          <textarea
+            rows="5"
+            cols="50"
+            name="message"
+            class="form-control"
+            id="message"
+            placeholder="Message..."
+            tabindex="4"
+            required
+          ></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" value="submit" class="btn btn-start-order">
+            Send Message
+          </button>
         </div>
       </form>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+<script src="./form.js"></script>
