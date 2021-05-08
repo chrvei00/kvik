@@ -7,6 +7,18 @@ const nodemailer = require("nodemailer");
 const ejs = require("ejs");
 const helmet = require("helmet");
 require("dotenv").config();
+//Database setup
+const MongoClient = require("mongodb").MongoClient;
+const uri = `mongodb+srv://ChristianV:${process.env.PASS}@feedbackforms.alzqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+client.connect((err) => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 //App set
 app.set("view engine", "ejs");
 //App use
