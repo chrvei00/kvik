@@ -97,7 +97,7 @@
     <form
       id="feedback-form"
       method="POST"
-      action="submit"
+      action="send"
       enctype="multipart/form-data"
     >
       <!-- Name input -->
@@ -186,12 +186,15 @@
       </div>
       <!-- Message input -->
       <div class="form-outline mt-4 mb-4">
-        <label class="form-label" for="form4Example3">Noe å legge til?</label>
+        <label class="form-label" for="form4Example3"
+          >Hvorfor valgte du som du gjorde?</label
+        >
         <textarea
           class="form-control"
           rows="4"
           placeholder="Skriv her..."
           name="additionalText"
+          required
         ></textarea>
       </div>
       <button
@@ -204,4 +207,4 @@
     </form>
   </div>
 </div>
-<script src="./form.js"></script>
+<script src="form.js"></script>
