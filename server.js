@@ -25,11 +25,14 @@ app.use(helmet());
 app.use(expressLayouts);
 app.use(express.json());
 //Routes
-const feedbackRoute = require("./routes/feedbackRoute");
-app.use("/feedback", feedbackRoute);
 const homeRoute = require("./routes/homeRoute");
 app.use("/", homeRoute);
-//Feedback-form logic
+const feedbackRoute = require("./routes/feedbackRoute");
+app.use("/feedback", feedbackRoute);
+const reklamasjonRoute = require("./routes/reklamasjonRoute");
+app.use("/reklamasjon", reklamasjonRoute);
+const kontaktRoute = require("./routes/kontaktRoute");
+app.use("/kontakt", kontaktRoute);
 
 //Launch server on Port
 app.listen(process.env.PORT, () => {
