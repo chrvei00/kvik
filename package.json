@@ -25,6 +25,7 @@
     "express-ejs-layouts": "^2.5.0",
     "helmet": "^4.6.0",
     "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
     "multiparty": "^4.2.2",
     "nodemailer": "^6.6.0"
   },
