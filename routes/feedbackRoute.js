@@ -18,9 +18,10 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 //GET form
 router.get("/form", (req, res) => {
-  res.render("form.ejs");
+  res.render("./feedback/form.ejs");
 });
 
 //POST form
@@ -69,14 +70,13 @@ router.post("/send", (req, res) => {
     try {
       await form.save();
       await transporter.sendMail(mail);
-      res.status(201).render("formSubmitted.ejs");
+      res.status(201).render("./feedback/formSubmitted.ejs");
     } catch (error) {
-      res.status(500).render("formError.ejs");
+      res.status(500).render("./feedback/formError.ejs");
     }
   });
   //3. Send mail Save DB
 });
-//GET all feedback
 //DELETE feedback
 
 module.exports = router;
