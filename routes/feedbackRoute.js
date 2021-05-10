@@ -39,7 +39,7 @@ transporter.verify(function (error, success) {
   if (error) {
     console.log(error);
   } else {
-    console.log("Connected to mailServer");
+    console.log("FEEDBACK - Connected to mailServer");
   }
 });
 //POST FORM
