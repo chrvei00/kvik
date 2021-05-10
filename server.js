@@ -37,7 +37,7 @@ app.use(
 );
 app.use(
   session({
-    secret: process.env.secret,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -64,25 +64,25 @@ passport.deserializeUser((id, done) => {
     done(err, user);
   });
 });
-passport.use(
-  new localStrategy((username, password, done) => {
-    admin.findOne({ name: username }, (err, user) => {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      }
-      bcrypt.compare(password, user.pwd, (err, res) => {
-        if (err) return done(err);
-        if (res == false) {
-          return done(null, false, { message: "Incorrect password" });
-        }
-        return done(null, user);
-      });
-    });
-  })
-);
+// passport.use(
+//   new localStrategy((username, password, done) => {
+//     admin.findOne({ name: username }, (err, user) => {
+//       if (err) {
+//         return done(err);
+//       }
+//       if (!user) {
+//         return done(null, false, { message: "Incorrect username" });
+//       }
+//       bcrypt.compare(password, user.pwd, (err, res) => {
+//         if (err) return done(err);
+//         if (res == false) {
+//           return done(null, false, { message: "Incorrect password" });
+//         }
+//         return done(null, user);
+//       });
+//     });
+//   })
+// );
 //Routes
 const homeRoute = require("./routes/homeRoute");
 app.use("/", homeRoute);
