@@ -12,18 +12,8 @@ const reklamasjonForm = require("../models/reklamasjonSchema");
 //GET HomePage
 //Routes
 router.get("/", async (req, res) => {
-  try {
-    const forms = await reklamasjonForm.find();
-    res.status(200).json(forms);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-router.get("/form", (req, res) => {
   res.render("./reklamasjon/form.ejs");
 });
-
 //POST form
 //Define mail-server
 const transporter = nodemailer.createTransport({

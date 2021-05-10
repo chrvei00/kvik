@@ -10,17 +10,9 @@ const mongoose = require("mongoose");
 const feedbackForm = require("../models/feedbackSchema");
 
 //GET feedbackIndex
-router.get("/", async (req, res) => {
-  try {
-    const forms = await feedbackForm.find();
-    res.status(200).json(forms);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
 //GET form
-router.get("/form", (req, res) => {
+router.get("/", (req, res) => {
   res.render("./feedback/form.ejs");
 });
 
