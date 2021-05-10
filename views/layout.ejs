@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <%- include('./partials/head.ejs') %>
   </head>
 
-  <body>
-    <div><%- include('./partials/navbar.ejs') %></div>
-    <div class="container mx-auto my-3"><%- body %></div>
-    <div><%- include('./partials/footer.ejs') %></div>
+  <body class="d-flex h-100 text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto"><%- include('./partials/navbar.ejs') %></header>
+      <main class="p-5 border"><%- body %></main>
+      <footer class="text-center mt-auto text-white-50">
+        <%- include('./partials/footer.ejs') %>
+      </footer>
+    </div>
     <!-- Scripts -->
-    <script src="/scripts/bootstrapJS/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- <script src="/scripts/bootstrapJS/bootstrap.js"></script> -->
+    <script src="/scripts/bootstrapJS/bootstrap.min.js"></script>
   </body>
 </html>
