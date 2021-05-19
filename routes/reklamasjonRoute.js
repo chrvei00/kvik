@@ -7,12 +7,12 @@ const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 const mongoose = require("mongoose");
 //schemaes
-const reklamasjonForm = require("../models/reklamasjonSchema");
+const reklamasjonForm = require("../models/reklamasjonsSkjemaModel");
 
 //GET HomePage
 //Routes
 router.get("/", async (req, res) => {
-  res.render("./reklamasjon/form.ejs");
+  res.render("./reklamasjon/form.ejs", { layout: "altLayout" });
 });
 //POST form
 //Define mail-server

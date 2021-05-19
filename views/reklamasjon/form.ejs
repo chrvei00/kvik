@@ -1,10 +1,9 @@
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<div class="container w-75">
+<div class="container col-xs-12 col-md-10">
   <div class="container contents-container mt-3">
     <div class="row flex-nowrap">
       <div class="col">
         <div class="text-center">
-          <h1>Reklamasjon KVIK Alnabru</h1>
+          <h1>Reklamasjon KVIK</h1>
         </div>
       </div>
     </div>
@@ -14,127 +13,154 @@
       <div class="col">
         <div class="text-center">
           <h5>
-            Ble ikke bestillingen som håpet? Send inn et reklamasjon-skjema, og
-            vi tar kontakt med deg.
+            Ble ikke bestillingen som håpet? Send inn et reklamasjon-skjema. Vi
+            kontakter deg så raskt som mulig.
           </h5>
         </div>
       </div>
     </div>
   </div>
-  <div class="container mt-3">
-    <form
-      id="reklamasjon-form"
-      method="POST"
-      action="/reklamasjon/send"
-      enctype="multipart/form-data"
-    >
-      <!-- Name input -->
-      <label for="">Info:</label>
-      <div class="row mt-2">
-        <div class="col">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Navn"
-            name="name"
-            required
-          />
-        </div>
-        <div class="col">
-          <input
-            type="email"
-            class="form-control"
-            placeholder="Email"
-            name="email"
-            required
-          />
-        </div>
+  <div class="container mt-3"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+          Aller først, dersom du har utfordring med en hvitevare som er av
+          merket Siemens, Bosch, Constructa eller NEFF så skal du ikke
+          registrere dette her. Da skal du ringe BSH (Bosch Siemens
+          Husholdningsapparater) på telefon 22 66 06 00, og avtale direkte med
+          dem et evt. hjemmebesøk. BSH vil spørre etter noe som heter
+          «E-nummer», og dette er fysisk merket på ditt produkt. (Dette
+          E-nummeret står ikke på faktura.)
+        </p>
+        <p>
+          For å kunne bistå med raskest mulig løsning og utbedring trenger vi
+          din hjelp til å fylle ut informasjonen i skjemaet på denne siden, og
+          trykke på «SEND INN » knappen.
+        </p>
+        <p>
+          Dersom henvendelsen gjelder synlig skade på vare, må også bilder
+          legges ved.
+        </p>
+        <p>
+          Vi skal løse saken så raskt som mulig, og du vil få tilbakemelding om
+          status senest innen 3 virkedager.
+        </p>
       </div>
-      <div class="row mt-4 mb-2">
-        <label for="q1">Hvordan opplevde du kundeservicen?</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q1Radio"
-          value="Dårlig"
-          required
-        />
-        <label class="form-check-label" for="inlineRadio1">Dårlig</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q1Radio"
-          value="Nøytral"
-        />
-        <label class="form-check-label" for="inlineRadio2">Nøytral</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q1Radio"
-          value="Bra"
-        />
-        <label class="form-check-label" for="inlineRadio3">Bra</label>
-      </div>
-      <div class="row mt-4 mb-2">
-        <label for="q1">Ville du rekkomendert oss til en venn?</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q2Radio"
-          value="Nei"
-          required
-        />
-        <label class="form-check-label" for="inlineRadio1">Nei</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q2Radio"
-          value="Usikker"
-        />
-        <label class="form-check-label" for="inlineRadio2">Usikker</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="q2Radio"
-          value="Ja"
-        />
-        <label class="form-check-label" for="inlineRadio3">Ja</label>
-      </div>
-      <!-- Message input -->
-      <div class="form-outline mt-4 mb-4">
-        <label class="form-label" for="form4Example3"
-          >Hvorfor valgte du som du gjorde?</label
+      <div class="col">
+        <form
+          id="reklamasjon-form"
+          method="POST"
+          action="/reklamasjon/send"
+          enctype="multipart/form-data"
         >
-        <textarea
-          class="form-control"
-          rows="4"
-          placeholder="Skriv her..."
-          name="additionalText"
-          required
-        ></textarea>
+          <!-- Name input -->
+          <div class="mb-3">
+            <label class="form-label" for="navn">Navn:</label>
+            <input
+              class="form-control"
+              type="text"
+              id="navn"
+              placeholder="navn"
+              name="name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              class="form-control"
+              type="text"
+              id="email"
+              placeholder="email"
+              name="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="telefon" class="form-label">Telefonnummer:</label>
+            <input
+              class="form-control"
+              type="tel"
+              id="telefon"
+              placeholder="telefon"
+              name="telefon"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="ordnr" class="form-label"
+              >Ordrenummer (eks: TI3743434)</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              id="ordnr"
+              placeholder="ord.nr."
+              name="ordnr"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="kjøpsdato" class="form-label">Kjøpsdato</label>
+            <input
+              class="form-control"
+              type="date"
+              id="kjøpsdato"
+              name="kjøpsdato"
+            />
+          </div>
+          <div class="mb3">
+            <div>
+              <label class="form-label" for="montering"
+                >Bestilte du montering igjennom Kvik?</label
+              >
+            </div>
+            <div class="form-check form-check-inline" id="montering">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="montering"
+                id="inlineRadio1"
+                value="JA"
+              />
+              <label class="form-check-label" for="inlineRadio1">Ja</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="montering"
+                id="inlineRadio2"
+                value="NEI"
+              />
+              <label class="form-check-label" for="inlineRadio2">Nei</label>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="beskrivelse"
+                >Beskrivelse av skaden:
+              </label>
+              <textarea
+                id="beskrivelse"
+                class="form-control"
+                aria-label="With textarea"
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="bilde" class="form-label"
+                >Last opp bilde av skaden:</label
+              >
+              <input class="form-control" type="file" id="bilde" />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            value="submit"
+            class="btn btn-success btn-block mt-4 mb-4"
+          >
+            Send inn
+          </button>
+        </form>
       </div>
-      <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-      <br />
-      <button
-        type="submit"
-        value="submit"
-        class="btn btn-primary btn-block mb-4"
-      >
-        Send
-      </button>
-    </form>
+    </div>
   </div>
 </div>
 <script src="../../public/scripts/reklamasjonForm.js"></script>
