@@ -2,13 +2,17 @@
 <html lang="en">
   <head>
     <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/styles/dashboard.css" />
   </head>
 
   <body class="">
-    <header><%- include('./partials/navbar.ejs') %></header>
+    <%- include('./partials/header.ejs') %>
+    <%-include('./partials/dashNav.ejs')%> <%- body %>
+
     <footer class=""><%- include('./partials/footer.ejs') %></footer>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="/scripts/dashboard.js"></script>
     <!-- <script src="/scripts/bootstrapJS/bootstrap.js"></script> -->
     <script src="/scripts/bootstrapJS/bootstrap.min.js"></script>
   </body>

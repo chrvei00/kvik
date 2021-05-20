@@ -11,6 +11,7 @@ require("dotenv").config();
 //Schema
 const User = require("./models/userModel");
 //Middleware
+const { isLoggedIn } = require("./middleware/auth");
 //Database setup
 mongoose
   .connect(process.env.DB_URL, {
@@ -49,14 +50,16 @@ app.use(express.json());
 //Passport
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()))
+passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //Routes
 const reklamasjonRoute = require("./routes/reklamasjonRoute");
 app.use("/reklamasjon", reklamasjonRoute);
 const dashboardRoute = require("./routes/dashboardRoute");
-app.use("/dashboard", dashboardRoute);
+app.use("/dashboard", isLoggedIn, dashboardRoute);
+const loginRoute = require("./routes/loginRoute");
+app.use("/login", loginRoute);
 
 //Launch server on Port
 app.listen(process.env.PORT, () => {

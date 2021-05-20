@@ -14,8 +14,8 @@ router.get("/reklamasjon", (req, res) => {
   res.render("./dashboard/reklamasjonDash.ejs");
 });
 
-router.get("/user", (req, res) => {
-  res.render("./dashboard/usersDash.ejs");
+router.get("/brukere", (req, res) => {
+  res.render("./dashboard/brukere.ejs", { layout: "altLayout" });
 });
 
 module.exports = router;
