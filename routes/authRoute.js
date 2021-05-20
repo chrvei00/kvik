@@ -5,14 +5,14 @@ const User = require("../models/userModel");
 const { isLoggedIn } = require("../middleware/auth");
 
 //Routes
-router.get("/", (req, res) => {
-  res.render("./auth/signIn.ejs", { layout: "altLayout" });
+router.get("/signin", (req, res) => {
+  res.render("./auth/signIn.ejs");
 });
 
 router.post(
-  "/send",
+  "/signin",
   passport.authenticate("local", {
-    failureRedirect: "/login",
+    failureRedirect: "/dashboard",
   }),
   (req, res) => {
     res.redirect("/dashboard");
@@ -21,7 +21,7 @@ router.post(
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/dashboard");
+  res.redirect("/");
 });
 
 router.post("/registrer", isLoggedIn, async (req, res) => {
@@ -32,7 +32,7 @@ router.post("/registrer", isLoggedIn, async (req, res) => {
   });
   const savedUser = await User.register(user, password);
   console.log(savedUser);
-  res.redirect("/dashboard", { message: "Ny bruker registrert!" });
+  res.redirect("/dashboard");
 });
 
 module.exports = router;

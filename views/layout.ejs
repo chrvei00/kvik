@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- head -->
     <%- include('./partials/head.ejs') %>
-    <link rel="stylesheet" href="/styles/dashboard.css" />
   </head>
 
-  <body class="">
+  <body class="d-flex flex-column vh-100">
+    <!-- Includes -->
+    <!-- header -->
     <%- include('./partials/header.ejs') %>
-    <%-include('./partials/dashNav.ejs')%> <%- body %>
-
-    <footer class=""><%- include('./partials/footer.ejs') %></footer>
+    <!-- flash -->
+    <%= success %>
+    <!-- body -->
+    <%- body %>
+    <!-- footer -->
+    <%- include('./partials/footer.ejs') %>
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="/scripts/dashboard.js"></script>
-    <!-- <script src="/scripts/bootstrapJS/bootstrap.js"></script> -->
-    <script src="/scripts/bootstrapJS/bootstrap.min.js"></script>
+    <script src="/scripts/bootstrapJS/bootstrap.js"></script>
   </body>
 </html>

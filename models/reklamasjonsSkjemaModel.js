@@ -3,30 +3,35 @@ const mongoose = require("mongoose");
 const reklamasjonFormSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
   },
-  q1Radio: {
+  telefon: {
     type: String,
-    required: true,
   },
-  q2Radio: {
+  ordnr: {
     type: String,
-    required: true,
   },
-  additionalText: {
-    type: String,
-    required: true,
-    default: "No extra comment.",
-  },
-  date: {
+  buydate: {
     type: Date,
-    required: true,
+  },
+  reklamasjonsdate: {
+    type: Date,
     default: Date.now(),
   },
+  montering: {
+    type: Boolean,
+  },
+  beskrivelse: {
+    type: String,
+  },
+  images: [
+    {
+      url: String,
+      filename: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("reklamasjonFormSchema", reklamasjonFormSchema);
