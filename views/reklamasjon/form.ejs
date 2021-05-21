@@ -1,9 +1,21 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <img
+        class=""
+        src="/images/kvik-logo.png"
+        alt="..."
+        style="height: 90px"
+      />
+    </div>
+  </div>
+</div>
 <div class="container col-xs-12 col-md-10">
   <div class="container contents-container mt-3">
     <div class="row flex-nowrap">
       <div class="col">
         <div class="text-center">
-          <h1>Reklamasjon KVIK</h1>
+          <h1>Reklamasjon</h1>
         </div>
       </div>
     </div>
@@ -47,6 +59,10 @@
           Vi skal løse saken så raskt som mulig, og du vil få tilbakemelding om
           status senest innen 3 virkedager.
         </p>
+        <p>
+          Trenger du hjelp til å fylle ut skjemaet? Ring oss gjerne på xxxxxxxx
+          eller <a href="mailto:">Send en mail.</a>
+        </p>
       </div>
       <div class="col">
         <form
@@ -64,6 +80,7 @@
               id="navn"
               placeholder="navn"
               name="reklamasjon[name]"
+              required
             />
           </div>
           <div class="mb-3">
@@ -74,6 +91,7 @@
               id="email"
               placeholder="email"
               name="reklamasjon[email]"
+              required
             />
           </div>
           <div class="mb-3">
@@ -84,6 +102,7 @@
               id="telefon"
               placeholder="telefon"
               name="reklamasjon[telefon]"
+              required
             />
           </div>
           <div class="mb-3">
@@ -96,6 +115,7 @@
               id="ordnr"
               placeholder="ord.nr."
               name="reklamasjon[ordnr]"
+              required
             />
           </div>
           <div class="mb-3">
@@ -105,6 +125,7 @@
               type="date"
               id="buydate"
               name="reklamasjon[buydate]"
+              required
             />
           </div>
           <div class="mb3">
@@ -120,6 +141,7 @@
                 name="reklamasjon[montering]"
                 id="inlineRadio1"
                 value="true"
+                required
               />
               <label class="form-check-label" for="inlineRadio1">Ja</label>
             </div>
@@ -142,6 +164,7 @@
                 class="form-control"
                 aria-label="With textarea"
                 name="reklamasjon[beskrivelse]"
+                required
               ></textarea>
             </div>
             <div class="mb-3">

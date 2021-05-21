@@ -32,6 +32,19 @@ const reklamasjonFormSchema = new mongoose.Schema({
       filename: String,
     },
   ],
+  finished: {
+    type: Boolean,
+  },
+  note: {
+    content: String,
+    username: String,
+    dato: Date,
+  },
+  sett: [
+    {
+      username: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("reklamasjonFormSchema", reklamasjonFormSchema);

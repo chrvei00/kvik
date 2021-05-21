@@ -1,0 +1,198 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
+      <a class="sidebar-toggler text-gray-500 me-4 me-lg-5 lead" href="#"
+        > <i class="fas fa-align-left"></i></a>
+        <a class="navbar-brand fw-bold text-uppercase text-base" href="/dashboard">
+          <span class="d-none d-brand-partial"><img
+            class=""
+            src="images/kvik-logo90px.png"
+            alt="..."
+            style="height: 30px;"
+          /></span>
+        </a>
+      <ul class="ms-auto d-flex align-items-center list-unstyled mb-0">
+  
+        <!-- Messages                        -->
+        <li class="nav-item dropdown ms-auto">
+          <a
+            class="nav-link pe-0 text-gray-700"
+            id="userInfo"
+            href="#"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><svg class="svg-icon svg-icon-md me-3">
+              <use xlink:href="icons/orion-svg-sprite.svg#man-1"></use></svg></a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userInfo">
+            <div class="dropdown-header text-gray-700">
+              <h6 class="text-uppercase font-weight-bold">Christian Veiby</h6>
+              <small>Utvikler</small>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item disabled text-decoration-line-through" href="#">Innstillinger</a
+            ><a class="dropdown-item" href="/auth/logout">Log out</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="d-flex align-items-stretch">
+      <div class="sidebar py-3" id="sidebar">
+        <h6 class="sidebar-heading">Meny</h6>
+        <ul class="list-unstyled">
+          <li class="sidebar-list-item">
+            <a class="sidebar-link text-muted active" href="/dashboard">
+              <svg class="svg-icon svg-icon-md me-3">
+                <use xlink:href="icons/orion-svg-sprite.svg#real-estate-1"></use></svg>
+                <span class="sidebar-link-title">Oversikt</span></a>
+          </li>
+          <li class="sidebar-list-item">
+            <a
+              class="sidebar-link text-muted"
+              href="#"
+              data-bs-target="#pagesDropdown"
+              role="button"
+              aria-expanded="false"
+              data-bs-toggle="collapse"
+            >
+              <svg class="svg-icon svg-icon-md me-3">
+                <use xlink:href="icons/orion-svg-sprite.svg#paper-stack-1"></use></svg> <span class="sidebar-link-title">Saker </span></a>
+            <ul class="sidebar-menu list-unstyled collapse" id="pagesDropdown">
+              <li class="sidebar-list-item">
+                <a class="sidebar-link text-muted" href="/dashboard/unsolved"
+                  >Åpne</a
+                >
+              </li>
+              <li class="sidebar-list-item">
+                <a class="sidebar-link text-muted" href="/dashboard/solved"
+                  >Fullførte</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-list-item">
+            <a class="sidebar-link text-muted disabled text-decoration-line-through" href="/dashboard">
+              <svg class="svg-icon svg-icon-md me-3">
+                <use xlink:href="icons/orion-svg-sprite.svg#pie-chart-1"></use></svg><span class="sidebar-link-title">Statistikk</span></a
+            >
+          </li>
+          <li class="sidebar-list-item">
+            <a class="sidebar-link text-muted" href="/dashboard/users">
+              <svg class="svg-icon svg-icon-md me-3">
+                <use xlink:href="icons/orion-svg-sprite.svg#man-1"></use></svg><span class="sidebar-link-title">Brukere</span></a
+            >
+          </li>
+        
+        </ul>
+      </div>
+      <div class="page-holder bg-gray-100">
+        <div class="container-fluid px-lg-4 px-xl-5">
+          <section class="mb-4 mb-lg-5">
+            <div class="row text-dark">
+              <div class="col-md-6 col-xl-4 mb-4">
+                <div class="card credit-card bg-hover-gradient-blue">
+                  <div class="credict-card-content">
+                      <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
+                        <div class="fw-light">Nye saker</div>
+                      <h4 class="mb-1 text-xl">5</h4>
+                    </div>
+                  </div>
+                  <a class="stretched-link" href="/dashboard/unsolved"></a>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4 mb-4">
+                <div class="card credit-card bg-hover-gradient-red">
+                  <div class="credict-card-content">
+                      <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
+                        <div class="fw-light">Uløste saker</div>
+                      <h4 class="mb-1 text-xl">9</h4>
+                    </div>
+                  </div>
+                  <a class="stretched-link" href="/dashboard/unsolved"></a>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4 mb-4">
+                <div class="card credit-card bg-hover-gradient-green">
+                  <div class="credict-card-content">
+                      <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
+                        <div class="fw-light">Arkiverte saker</div>
+                      <h4 class="mb-1 text-xl">15</h4>
+                    </div>
+                  </div>
+                  <a class="stretched-link" href="/dashboard/solved"></a>
+                </div>
+              </div>
+              
+              
+             
+            </div>
+          </section>
+          <section class="mb-4">
+            <h2 class="section-heading section-heading-ms mb-4 mb-lg-5">
+              Nyeste uløste saker:
+            </h2>
+            <div class="row">
+              <div class="col-sm-6 col-xl-12">
+                <a
+                  class="
+                    message
+                    card
+                    px-5
+                    py-3
+                    mb-4
+                    bg-hover-gradient-primary
+                    text-decoration-none text-reset
+                  "
+                  href="/dashboard/unsolved"
+                >
+                  <div class="row">
+                    <div
+                      class="
+                        col-xl-3
+                        d-flex
+                        align-items-center
+                        flex-column flex-xl-row
+                        text-center text-md-left
+                      "
+                    >
+                      <strong class="h5 mb-0"
+                        >24<sup
+                          class="text-xs text-gray-500 font-weight-normal ms-1"
+                          >Apr</sup
+                        ></strong
+                      >
+                      <h6 class="p-1 mx-3 my-2 my-xl-0">Jason Maxwell</h6>
+                    </div>
+                    <div
+                      class="
+                        col-xl-9
+                        d-flex
+                        align-items-center
+                        flex-column flex-xl-row
+                        text-center text-md-left
+                      "
+                    >
+  
+                      <p class="mb-0 mt-3 mt-lg-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor.
+                      </p>
+                    </div>
+                  </div></a
+                >
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer
+          class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100"
+        >
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-start text-primary">
+                <p class="mb-2 mb-md-0 text-gray-500">kvik &copy; 2021</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+  </div>

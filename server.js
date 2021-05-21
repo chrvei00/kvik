@@ -12,6 +12,7 @@ const helmet = require("helmet");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const flash = require("connect-flash");
+const path = require("path");
 //Schema
 const User = require("./models/userModel");
 //Middleware
@@ -27,11 +28,10 @@ mongoose
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to DB"));
-//App set
-app.set("view engine", "ejs");
 //App use (standard middleware)
 app.use(
-  express.static("public/", {
+  "/static",
+  express.static(path.join(__dirname, "../public/"), {
     dotfiles: "ignore",
     etag: true,
     extensions: "ejs",
@@ -40,6 +40,9 @@ app.use(
     redirect: false,
   })
 );
+//App set
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
 app.use(
   session({
     name: "session",

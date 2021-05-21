@@ -24,10 +24,13 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.post("/registrer", isLoggedIn, async (req, res) => {
-  const { email, username, password } = req.body;
+router.post("/newUser", isLoggedIn, async (req, res) => {
+  const { name, username, password, telefon, rolle, sex } = req.body;
   const user = new User({
-    email,
+    name,
+    telefon,
+    rolle,
+    sex,
     username,
   });
   const savedUser = await User.register(user, password);
