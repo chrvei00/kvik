@@ -5,7 +5,7 @@ const multer = require("multer");
 const { storage } = require("../cloudinary/index");
 const upload = multer({ storage });
 //schemaes
-const reklamasjonForm = require("../models/reklamasjonsSkjemaModel");
+const reklamasjonForm = require("../models/reklamasjonModel");
 //Routes
 router.get("/", (req, res) => {
   res.render("./reklamasjon/form.ejs");

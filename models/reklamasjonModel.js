@@ -47,4 +47,4 @@ const reklamasjonFormSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("reklamasjonFormSchema", reklamasjonFormSchema);
+module.exports = mongoose.model("Reklamasjon", reklamasjonFormSchema);

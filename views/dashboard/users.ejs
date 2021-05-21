@@ -19,6 +19,7 @@
   </div>
   <section>
     <div class="row">
+      <% for (let bruker of brukere) { %>
       <div class="col-md-6 col-xl-4">
         <div class="card mb-4">
           <div class="card-body">
@@ -28,11 +29,15 @@
                   <use xlink:href="/icons/orion-svg-sprite.svg#man-1"></use>
                 </svg>
               </div>
+
               <div class="flex-grow-1 ps-3 overflow-hidden">
-                <h5 class="card-text mb-0">Fullt navn</h5>
-                <p class="card-text text-uppercase text-muted">Rolle</p>
+                <h5 class="card-text mb-0"><%= bruker.name %></h5>
+                <p class="card-text text-uppercase text-muted">
+                  <%= bruker.rolle %>
+                </p>
                 <p class="card-text">
-                  email@email.email<br /><abbr title="Phone"></abbr>96904420
+                  <%= bruker.username %><br /><abbr title="Phone"></abbr><%=
+                  bruker.telefon %>
                 </p>
               </div>
             </div>
@@ -40,6 +45,7 @@
           </div>
         </div>
       </div>
+      <% } %>
     </div>
   </section>
 </div>
