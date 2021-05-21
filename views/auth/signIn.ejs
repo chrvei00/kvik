@@ -1,30 +1,66 @@
-<main class="form-signin text-center">
-  <form method="POST" action="/auth/login">
-    <img class="mb-4" src="/kvik-logo.png" alt="" width="200" height="59" />
-    <h1 class="h3 mb-3 fw-normal mt-4">Logg inn</h1>
-    <div class="form-floating">
-      <input
-        type="text"
-        class="form-control"
-        id="floatingInput"
-        placeholder="Name"
-        name="username"
-      />
-      <label for="floatingInput">Name</label>
+<div class="container-fluid px-0">
+  <div class="row gx-0 min-vh-100">
+    <div
+      class="col-md-9 col-lg-6 col-xl-4 px-5 d-flex align-items-center shadow"
+    >
+      <div class="w-100 py-5">
+        <div class="text-center">
+          <img
+            class="img-fluid mb-4"
+            src="images/SVG/kvikLogo.svg"
+            alt="..."
+            style="max-width: 30rem"
+          />
+        </div>
+        <form method="get" action="/reklamasjon">
+          <h1 class="h4 text-uppercase mb-5">Sende inn reklamasjon?</h1>
+          <!-- Submit-->
+          <div class="d-grid mb-5">
+            <button class="btn btn-danger text-uppercase">
+              <strong>Fyll ut skjema.</strong>
+            </button>
+          </div>
+        </form>
+        <form method="POST" action="/auth">
+          <h1 class="h4 text-uppercase pt-5 mb-5">Log in</h1>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+              class="form-control"
+              name="username"
+              type="string"
+              autocomplete="off"
+            />
+          </div>
+          <div class="mb-4">
+            <div class="row">
+              <div class="col">
+                <label class="form-label">Password</label>
+              </div>
+              <div class="col-auto">Glemt passord? Ring utvikleren.</div>
+            </div>
+            <input class="form-control" name="password" type="password" />
+          </div>
+          <!-- Submit-->
+          <div class="d-grid mb-5">
+            <button
+              type="submit"
+              class="btn btn-success text-white text-uppercase"
+            >
+              <strong>Log in</strong>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        name="password"
-      />
-      <label for="floatingPassword">Password</label>
+    <div class="col-md-3 col-lg-6 col-xl-8 d-none d-md-block">
+      <!-- Image-->
+      <div
+        class="bg-cover h-100 me-n3"
+        style="
+          background-image: url(img/photos/restaurant-1508766917616-d22f3f1eea14.jpg);
+        "
+      ></div>
     </div>
-    <button class="w-100 btn btn-lg btn-primary mb-4" type="submit">
-      Log in
-    </button>
-    <a href="/login/forgotPassword">Forgot password?</a>
-  </form>
-</main>
+  </div>
+</div>

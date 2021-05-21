@@ -5,17 +5,12 @@
     <%- include('./partials/head.ejs') %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body>
     <!-- Includes -->
-    <!-- header -->
-    <%- include('./partials/header.ejs') %>
-    <!-- flash -->
-    <%= success %>
+
     <!-- body -->
     <%- body %>
-    <!-- footer -->
-    <%- include('./partials/footer.ejs') %>
     <!-- Scripts -->
-    <script src="/scripts/bootstrapJS/bootstrap.js"></script>
+    <%- include('./partials/scripts.ejs') %>
   </body>
 </html>

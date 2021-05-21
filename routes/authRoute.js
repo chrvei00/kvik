@@ -5,12 +5,12 @@ const User = require("../models/userModel");
 const { isLoggedIn } = require("../middleware/auth");
 
 //Routes
-router.get("/signin", (req, res) => {
-  res.render("./auth/signIn.ejs");
+router.get("/", (req, res) => {
+  res.render("auth/signIn.ejs", { layout: "" });
 });
 
 router.post(
-  "/signin",
+  "/",
   passport.authenticate("local", {
     failureRedirect: "/dashboard",
   }),

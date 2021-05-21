@@ -30,9 +30,8 @@ db.once("open", () => console.log("Connected to DB"));
 //App set
 app.set("view engine", "ejs");
 //App use (standard middleware)
-app.use(helmet());
 app.use(
-  express.static("public", {
+  express.static("public/", {
     dotfiles: "ignore",
     etag: true,
     extensions: "ejs",
@@ -43,6 +42,7 @@ app.use(
 );
 app.use(
   session({
+    name: "session",
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
@@ -64,7 +64,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //Routes
 app.get("/", (req, res) => {
-  res.render("home/index.ejs", { layout: "altLayout" });
+  res.redirect("/dashboard");
 });
 const reklamasjonRoute = require("./routes/reklamasjonRoute");
 app.use("/reklamasjon", reklamasjonRoute);

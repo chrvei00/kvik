@@ -8,7 +8,7 @@ const upload = multer({ storage });
 const reklamasjonForm = require("../models/reklamasjonsSkjemaModel");
 //Routes
 router.get("/", (req, res) => {
-  res.render("./reklamasjon/form.ejs", { layout: "altLayout" });
+  res.render("./reklamasjon/form.ejs");
 });
 
 router.post("/send", upload.array("images"), async (req, res) => {

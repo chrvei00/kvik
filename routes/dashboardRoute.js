@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Routes
 router.get("/", (req, res) => {
-  res.render("./dashboard/oversikt.ejs");
+  res.render("./dashboard/index.ejs");
 });
 
 router.get("/unsolved", (req, res) => {
@@ -12,6 +12,10 @@ router.get("/unsolved", (req, res) => {
 
 router.get("/solved", (req, res) => {
   res.render("./dashboard/solved.ejs");
+});
+
+router.get("/statistikk", (req, res) => {
+  res.render("./dashboard/stats.ejs");
 });
 
 router.get("/users", (req, res) => {
