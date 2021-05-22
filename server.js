@@ -13,6 +13,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const flash = require("connect-flash");
 const path = require("path");
+const methodOverride = require("method-override");
 //Schema
 const User = require("./models/userModel");
 //Middleware
@@ -23,6 +24,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   })
   .catch((error) => console.log(error));
 const db = mongoose.connection;
@@ -51,9 +53,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(methodOverride("_method"));
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
   next();
 });
 app.use(express.urlencoded({ extended: false }));

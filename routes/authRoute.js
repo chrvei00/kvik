@@ -15,6 +15,7 @@ router.post(
     failureRedirect: "/dashboard",
   }),
   (req, res) => {
+    req.flash("success", "Velkommen tilbake!")
     res.redirect("/dashboard");
   }
 );

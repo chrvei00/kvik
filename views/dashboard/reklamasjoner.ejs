@@ -2,72 +2,93 @@
   <!-- Page Header-->
   <div class="page-header d-flex justify-content-between align-items-center">
     <h1 class="page-heading">Reklamasjoner</h1>
-    <div>
-      <a class="btn btn-primary text-uppercase" href="/dashboard/reklamasjoner">
-        Alle reklamasjoner</a
-      >
-      <a class="btn btn-danger text-uppercase" href="/dashboard/unsolved">
-        Åpne reklamasjoner</a
-      >
-      <a
-        class="btn btn-success text-white text-uppercase"
-        href="/dashboard/solved"
-      >
-        Fullførte reklamasjoner</a
-      >
-    </div>
   </div>
   <section class="mb-4">
+    <div class="px-5 py-3 mb-4">
+      <div class="row">
+        <div class="col-12 col-lg-8 p-2">
+          <div class="input-group mb-3">
+            <button
+              class="btn btn-outline-primary"
+              id="button-addon1"
+              type="button"
+            >
+              Søk...
+            </button>
+            <input
+              class="form-control"
+              type="text"
+              placeholder=""
+              aria-label="Example text with button addon"
+              aria-describedby="button-addon1"
+              id="searchInput"
+              onkeyup="searchFilter()"
+            />
+          </div>
+        </div>
+        <div class="col-0 col-lg-1 p-2"></div>
+        <div class="col-4 col-lg-1 p-2">
+          <button onclick="buttonFilter(``)" class="btn btn-primary text-white text-uppercase">Alle</button>
+        </div>
+        <div class="col-4 col-lg-1 p-2">
+          <button onclick="buttonFilter(`false`)" class="btn btn-danger text-white text-uppercase">Åpne</button>
+        </div>
+        <div class="col-4 col-lg-1 p-2">
+          <button onclick="buttonFilter(`true`)" class="btn btn-success text-white text-uppercase">Fullførte</button>
+        </div>
+      </div>
+    </div>
+    <hr class="text-gray-700" />
+  </section>
+  <section class="mb-4">
     <div class="row">
+      <ul id="reklamasjonsList" style="list-style-type: none;">
       <% for (skjema of reklamasjoner){ %>
+        <li class="<%= skjema.finished %>">
       <div class="col-sm-6 col-xl-12">
         <a
-          class="
-            message
-            card
-            px-5
-            py-3
-            mb-4
-            <%
-            if
-            (!skjema.finished)
-            {
-            %>
-            bg-hover-gradient-red
-            <%
-            }
-            else
-            {
-            %>
-            bg-hover-gradient-green
-            <%
-            }
-            %>
-            text-decoration-none text-reset
-          "
-          href="/dashboard/reklamasjoner:id"
-        >
+          class="message card px-5 py-3 mb-4 <% if (!skjema.finished) { %> bg-hover-gradient-red border border-danger <% } else { %> bg-hover-gradient-green border border-success <% } %> text-decoration-none text-reset" 
+          href="/dashboard/reklamasjoner/<%= skjema._id %>"
+          >
           <div class="row">
             <div
               class="
-                col-xl-3
+                col-xl-1
                 d-flex
                 align-items-center
                 flex-column flex-xl-row
                 text-center text-md-left
               "
             >
-              <span class="mb-0 text-muted"
-                ><%= skjema.reklamasjonsdate.getDate() %> / <%=
-                skjema.reklamasjonsdate.getMonth() %> / <%=
-                skjema.reklamasjonsdate.getFullYear() %></span
-              >
+              <span class="mb-0 text-muted">
+                <%= skjema.reklamasjonsdate.getDate() %> / <%=skjema.reklamasjonsdate.getMonth() %> / <%=skjema.reklamasjonsdate.getFullYear() %>
+              </span>
+            </div>
+            <div
+              class="
+                col-xl-2
+                d-flex
+                align-items-center
+                flex-column flex-xl-row
+                text-center text-md-left
+              "
+            >
               <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.name %></h6>
+            </div>
+            <div
+              class="
+                col-xl-2
+                d-flex
+                align-items-center
+                flex-column flex-xl-row
+                text-center text-md-left
+              "
+            >
               <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.ordnr %></h6>
             </div>
             <div
               class="
-                col-xl-9
+                col-xl-7
                 d-flex
                 align-items-center
                 flex-column flex-xl-row
@@ -79,25 +100,20 @@
                 class="mb-0 mt-3 mt-lg-0 fifty"
                 style="
                   overflow: hidden;
-                  max-width: 75ch;
+                  max-width: 50ch;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 "
               >
-                <%= skjema.beskrivelse %> Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Laborum inventore fugit quo sapiente
-                consequuntur officia voluptate molestiae delectus nostrum in,
-                officiis fuga perspiciatis deleniti, labore ad quod ducimus,
-                quas aut. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Neque dolore dolor quaerat qui perspiciatis odio libero
-                temporibus. Quaerat officiis minus corrupti tempore ratione cum
-                cumque, amet harum omnis! Architecto, hic.
+                <%= skjema.beskrivelse %>
               </p>
             </div>
           </div>
         </a>
       </div>
+      </li>
       <% } %>
+    </ul>
     </div>
   </section>
 </div>

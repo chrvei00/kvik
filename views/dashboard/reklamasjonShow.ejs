@@ -1,0 +1,127 @@
+<div class="container-fluid px-lg-4 px-xl-5">
+    <!-- Breadcrumbs -->
+    <div class="page-breadcrumb">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Hjem</a></li>
+        <li class="breadcrumb-item"><a href="/dashboard/reklamasjoner">Reklamasjoner</a></li>
+        <li class="breadcrumb-item active"><%= reklamasjon.name %> </li>
+      </ul>
+    </div>
+    <!-- Page Header-->
+    <div class="page-header">
+      <h1 class="page-heading">Reklamasjon fra <%= reklamasjon.name %> </h1>
+    </div>
+    <section>
+        <div class="row">
+          <!-- Form Elements -->
+          <div class="col-lg-12 mb-5">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                    <div class="col-md-1 ms-auto">
+                        <form  action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST">
+                            <button class="btn btn-<%= reklamasjon.finished ? "success": "danger"; %> text-white"> Status </button>
+                      </form>
+                    </div>
+                    <div class="col-md-11 ms-auto">
+                        <form  action="/dashboard/reklamasjoner" method="GET">
+                      <button class="btn btn-danger"> Tilbake </button>
+                      </form>
+                    </div>
+                  </div>
+                   <hr class="bg-gray-700 mt-4">
+              </div>
+              <div class="card-header">
+                    <h5 class="h5">Kunde-info:</h3>
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Navn:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.name %> " class="form-control disabled" disabled type="text">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 mt-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Email:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.email %> " class="form-control disabled" disabled type="email">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 my-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Telefon:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.telefon %> " class="form-control disabled" disabled type="tel">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 my-4">
+                </form>
+              </div>
+              <div class="card-header">
+                    <h5 class="h5">Ordre-info:</h3>
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Ordrenummer:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.ordnr %> " class="form-control disabled" disabled type="text">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 mt-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Bestilt med montering:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.montering %> " class="form-control disabled" disabled type="text">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 mt-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Kjøpsdato:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.buydate %> " class="form-control disabled" disabled type="text">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 my-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Reklamasjonsdato:</label>
+                    <div class="col-md-9">
+                      <input value="<%= reklamasjon.reklamasjonsdate %>" class="form-control disabled" disabled type="text">
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 my-4">
+                </form>
+              </div>
+              <div class="card-header">
+                    <h5 class="h5">Reklamasjon-info:</h3>
+              </div>
+              <div class="card-body">
+                <form class="form-horizontal">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Beskrivelse:</label>
+                    <div class="col-md-9">
+                        <textarea id="beskrivelse" class="form-control" disabled name="reklamasjon[beskrivelse]" rows="8"><%= reklamasjon.beskrivelse %></textarea>
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 mt-4">
+                  <div class="row">
+                    <label class="col-md-3 form-label">Bilder:</label>
+                    <div class="col-md-9">
+                        <% for (img of reklamasjon.images) {%> 
+                          <div class="">
+                            <img src="<%= img.url %> " class="d-block" alt="...">
+                          </div>
+                          <% } %> 
+                    </div>
+                  </div>
+                  <hr class="bg-gray-400 mt-4">
+
+                </form>
+            </div>
+                </div>
+              </div>
+        </div>
+      </section>
+</div>

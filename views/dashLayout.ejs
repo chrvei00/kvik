@@ -33,14 +33,14 @@
                 aria-haspopup="true"
                 aria-expanded="false"
                 ><svg class="svg-icon svg-icon-md me-3">
-                  <use xlink:href="/icons/orion-svg-sprite.svg#man-1"></use></svg></a>
+                  <use xlink:href="/icons/orion-svg-sprite.svg#<%= currentuser.sex == "true" ? "man-1": "woman-1" %>"></use></svg></a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userInfo">
                 <div class="dropdown-header text-gray-700">
-                  <h6 class="text-uppercase font-weight-bold">Christian Veiby</h6>
-                  <small>Utvikler</small>
+                  <h6 class="text-uppercase font-weight-bold"><%= currentuser.name %> </h6>
+                  <small class="text-uppercase"><%= currentuser.rolle %></small>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled text-decoration-line-through" href="#">Innstillinger</a
+                <a class="dropdown-item" href="/dashboard/users/edit/<%= currentuser._id %> ">Innstillinger</a
                 ><a class="dropdown-item" href="/auth/logout">Log out</a>
             </li>
           </ul>
@@ -79,6 +79,7 @@
             </ul>
           </div>
           <div class="page-holder bg-gray-100">
+            <%- include('./partials/flash.ejs') %>
      <%- body %>
             <footer
               class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100"

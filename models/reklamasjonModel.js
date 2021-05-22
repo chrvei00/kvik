@@ -34,6 +34,7 @@ const reklamasjonFormSchema = new mongoose.Schema({
   ],
   finished: {
     type: Boolean,
+    default: false,
   },
   note: {
     content: String,

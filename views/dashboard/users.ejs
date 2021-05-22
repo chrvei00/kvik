@@ -26,11 +26,10 @@
             <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
                 <svg class="svg-icon svg-icon-md me-3">
-                  <use xlink:href="/icons/orion-svg-sprite.svg#man-1"></use>
+                  <use xlink:href="/icons/orion-svg-sprite.svg#<%= bruker.sex == "true" ? "man-1": "woman-1" %>"></use>
                 </svg>
               </div>
-
-              <div class="flex-grow-1 ps-3 overflow-hidden">
+              <div class="flex-grow-1 ps-3 overflow-hidden mx-4">
                 <h5 class="card-text mb-0"><%= bruker.name %></h5>
                 <p class="card-text text-uppercase text-muted">
                   <%= bruker.rolle %>
@@ -41,7 +40,7 @@
                 </p>
               </div>
             </div>
-            <a class="stretched-link" href=":brukerId"></a>
+            <a class="stretched-link" href="/dashboard/users/edit/<%= bruker._id %>"></a>
           </div>
         </div>
       </div>
