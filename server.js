@@ -14,6 +14,8 @@ const localStrategy = require("passport-local");
 const flash = require("connect-flash");
 const path = require("path");
 const methodOverride = require("method-override");
+const MongoStore = require('connect-mongo');
+const mongoSanitize = require("express-mongo-sanitize");
 //Schema
 const User = require("./models/userModel");
 //Middleware
@@ -41,6 +43,17 @@ app.use(
     redirect: false,
   })
 );
+// app.use(helmet());
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       "img-src": ["'self'", "https://res.cloudinary.com/djdcolqeg/image/upload/v1621797750/test/"],
+//       "style-src": ["'self'", "https://use.fontawesome.com/releases/v5.7.1/css/all.css", "https://fonts.gstatic.com"],
+//       "script-src": ["'self'", "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"]
+//     },
+//   })
+// );
 //App set
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -50,9 +63,14 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL,
+      touchAfter: 24 * 60 * 60 // = 14 days. Default
+    }),
   })
 );
 app.use(methodOverride("_method"));
+app.use(mongoSanitize());
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");

@@ -12,7 +12,6 @@ router.use(async (req, res, next) => {
 })
 //Routes
 router.get("/", (req, res) => {
-  req.flash("success", "Velkommen!");
   res.render("./dashboard/index.ejs", { layout: "dashLayout" });
 });
 

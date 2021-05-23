@@ -1,7 +1,4 @@
 /* your styles go here */
-.fifty {
-  overflow: hidden;
-  max-width: 75ch;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.noListStyle {
+  list-style-type: none;
 }

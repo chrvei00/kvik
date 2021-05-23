@@ -40,11 +40,11 @@
     <hr class="text-gray-700" />
   </section>
   <section class="mb-4">
-    <div class="row">
-      <ul id="reklamasjonsList" style="list-style-type: none;">
+    <ul id="reklamasjonsList" class="noListStyle">
+        <div class="row">
       <% for (skjema of reklamasjoner){ %>
         <li class="<%= skjema.finished %>">
-      <div class="col-sm-6 col-xl-12">
+      <div class="col-12">
         <a
           class="message card px-5 py-3 mb-4 <% if (!skjema.finished) { %> bg-hover-gradient-red border border-danger <% } else { %> bg-hover-gradient-green border border-success <% } %> text-decoration-none text-reset" 
           href="/dashboard/reklamasjoner/<%= skjema._id %>"
@@ -112,6 +112,6 @@
       </div>
       </li>
       <% } %>
-    </ul>
     </div>
+    </ul>
   </section>

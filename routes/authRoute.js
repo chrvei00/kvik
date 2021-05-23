@@ -6,11 +6,11 @@ const { isLoggedIn } = require("../middleware/auth");
 
 //Routes
 router.get("/", (req, res) => {
+  if (req.isAuthenticated()) {res.redirect("/dashboard"); return;};
   res.render("auth/signIn.ejs", { layout: "" });
 });
 
-router.post(
-  "/",
+router.post("/",
   passport.authenticate("local", {
     failureRedirect: "/dashboard",
   }),
