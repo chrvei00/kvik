@@ -1,60 +1,71 @@
-<div class="container-fluid px-lg-4 px-xl-5">
+<% var solved = 0; var unsolved = 0; %>
+<% for (skjema of reklamasjoner){ %>
+  <% skjema.finished ? solved++: unsolved++;%>  
+<% } %> 
   <section class="mb-4 mb-lg-5">
     <div class="row text-dark">
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="card credit-card bg-hover-gradient-blue">
-          <div class="credict-card-content">
-            <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
-              <div class="fw-light">Nye saker</div>
-              <h4 class="mb-1 text-xl">5</h4>
-            </div>
-          </div>
-          <a class="stretched-link" href="/dashboard/unsolved"></a>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4 mb-4">
+      <div class="col-md-6 col-12 mb-4">
         <div class="card credit-card bg-hover-gradient-red">
           <div class="credict-card-content">
             <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
-              <div class="fw-light">Uløste saker</div>
-              <h4 class="mb-1 text-xl">9</h4>
+              <div class="fw-light pb-3">Uløste saker</div>
+              <h4 class="mb-1 text-xl"><%= unsolved %> </h4>
             </div>
           </div>
-          <a class="stretched-link" href="/dashboard/unsolved"></a>
+          <a class="stretched-link" href="/dashboard/reklamasjoner"></a>
         </div>
       </div>
-      <div class="col-md-6 col-xl-4 mb-4">
+      <div class="col-md-6 col-12 mb-4">
         <div class="card credit-card bg-hover-gradient-green">
           <div class="credict-card-content">
             <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3">
-              <div class="fw-light">Arkiverte saker</div>
-              <h4 class="mb-1 text-xl">15</h4>
+              <div class="fw-light pb-3">Fullførte saker</div>
+              <h4 class="mb-1 text-xl"><%= solved %></h4>
             </div>
           </div>
-          <a class="stretched-link" href="/dashboard/solved"></a>
+          <a class="stretched-link" href="/dashboard/reklamasjoner"></a>
         </div>
       </div>
     </div>
   </section>
-  <section class="mb-4">
+  <section class="mb-4 mb-lg-5">
     <h2 class="section-heading section-heading-ms mb-4 mb-lg-5">
-      Nyeste uløste saker:
+      Nyeste saker:
     </h2>
-    <div class="row">
-      <div class="col-sm-6 col-xl-12">
+    <ul id="reklamasjonsList" style="list-style-type: none;">
+      <div class="row">
+      <% for (skjema of reklamasjoner){ %>
+        <li class="<%= skjema.finished %>">
+      <div class="col-12">
         <a
-          class="
-            message
-            card
-            px-5
-            py-3
-            mb-4
-            bg-hover-gradient-primary
-            text-decoration-none text-reset
-          "
-          href="/dashboard/unsolved"
-        >
+          class="message card px-5 py-3 mb-4 <% if (!skjema.finished) { %> bg-hover-gradient-red border border-danger <% } else { %> bg-hover-gradient-green border border-success <% } %> text-decoration-none text-reset" 
+          href="/dashboard/reklamasjoner/<%= skjema._id %>"
+          >
           <div class="row">
+            <div
+              class="
+                col-xl-1
+                d-flex
+                align-items-center
+                flex-column flex-xl-row
+                text-center text-md-left
+              "
+            >
+              <span class="mb-0 text-muted">
+                <%= skjema.reklamasjonsdate.getDate() %> / <%=skjema.reklamasjonsdate.getMonth() %> / <%=skjema.reklamasjonsdate.getFullYear() %>
+              </span>
+            </div>
+            <div
+              class="
+                col-xl-2
+                d-flex
+                align-items-center
+                flex-column flex-xl-row
+                text-center text-md-left
+              "
+            >
+              <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.name %></h6>
+            </div>
             <div
               class="
                 col-xl-3
@@ -64,30 +75,36 @@
                 text-center text-md-left
               "
             >
-              <strong class="h5 mb-0"
-                >24<sup class="text-xs text-gray-500 font-weight-normal ms-1"
-                  >Apr</sup
-                ></strong
-              >
-              <h6 class="p-1 mx-3 my-2 my-xl-0">Jason Maxwell</h6>
+              <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.ordnr %></h6>
             </div>
             <div
               class="
-                col-xl-9
+                col-xl-6
                 d-flex
                 align-items-center
                 flex-column flex-xl-row
                 text-center text-md-left
               "
             >
-              <p class="mb-0 mt-3 mt-lg-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor.
+              <h6 class="h5 p-1 mx-3 my-2 my-xl-0">Beskrivelse:</h6>
+              <p
+                class="mb-0 mt-3 mt-lg-0 fifty"
+                style="
+                  overflow: hidden;
+                  max-width: 50ch;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <%= skjema.beskrivelse %>
               </p>
             </div>
-          </div></a
-        >
+          </div>
+        </a>
       </div>
+      </li>
+      <% } %>
     </div>
+    </ul>
   </section>
-</div>
+

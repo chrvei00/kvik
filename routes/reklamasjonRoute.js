@@ -18,7 +18,6 @@ router.post("/send", upload.array("images"), async (req, res) => {
   //Save to DB
   try {
     await form.save();
-    console.log(form);
     res.status(201).render("./reklamasjon/formSubmitted.ejs");
   } catch (error) {
     res.status(500).render("./reklamasjon/formError.ejs");

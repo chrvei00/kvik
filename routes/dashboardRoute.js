@@ -3,24 +3,22 @@ const router = express.Router();
 const users = require("../models/userModel.js");
 const reklamasjonform = require("../models/reklamasjonModel.js");
 //middelware
-router.use((req, res, next) => {
+router.use(async (req, res, next) => {
   res.locals.currentuser = req.user;
+  res.locals.reklamasjoner = await reklamasjonform.find({});
+  res.locals.reklamasjoner.reverse();
+  res.locals.brukere = await users.find({});
   next();
 })
 //Routes
 router.get("/", (req, res) => {
-  console.log(req.user);
+  req.flash("success", "Velkommen!");
   res.render("./dashboard/index.ejs", { layout: "dashLayout" });
 });
 
 router.get("/reklamasjoner", async (req, res) => {
-  const reklamasjoner = await reklamasjonform.find({});
-  reklamasjoner.reverse();
-  const brukere = await users.find({});
   res.render("./dashboard/reklamasjoner.ejs", {
     layout: "dashLayout",
-    brukere,
-    reklamasjoner,
   });
 });
 
@@ -34,11 +32,9 @@ router.get("/reklamasjoner/:id", async (req, res) => {
 });
 
 router.put("/reklamasjoner/:id", async (req, res) => {
-  console.log("hello there");
   const { id } = req.params;
   const reklamasjon = await reklamasjonform.findById(id);
   reklamasjon.finished = !reklamasjon.finished;
-  console.log(reklamasjon);
   await reklamasjon.save();
   res.redirect(`/dashboard/reklamasjoner/${reklamasjon._id}`);
 });
@@ -55,10 +51,8 @@ router.get("/statistikk", (req, res) => {
 });
 
 router.get("/users", async (req, res) => {
-  const brukere = await users.find({});
   res.render("./dashboard/users.ejs", {
     layout: "dashLayout",
-    brukere: brukere,
   });
 });
 

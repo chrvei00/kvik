@@ -35,7 +35,6 @@ router.post("/newUser", isLoggedIn, async (req, res) => {
     username,
   });
   const savedUser = await User.register(user, password);
-  console.log(savedUser);
   res.redirect("/dashboard");
 });
 
