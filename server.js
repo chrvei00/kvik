@@ -33,7 +33,7 @@ db.once("open", () => console.log("Connected to DB"));
 //App use (standard middleware)
 app.use(
   "/static",
-  express.static(path.join(__dirname, "../public/"), {
+  express.static("../public/", {
     dotfiles: "ignore",
     etag: true,
     extensions: "ejs",
