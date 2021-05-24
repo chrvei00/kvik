@@ -1,3 +1,9 @@
+document.getElementById("searchInput").addEventListener("keyup", searchFilter);
+var filterAll = document.getElementById("filterAll").addEventListener("click", () => {buttonFilter("")});
+document.getElementById("filterUnsolved").addEventListener("click", () => {buttonFilter("false")});
+document.getElementById("filterSolved").addEventListener("click", () => {buttonFilter("true")});
+
+
 function searchFilter() {
     // Declare variables
     var input, filter, ul, li, a, i, txtValue;
@@ -22,13 +28,12 @@ function searchFilter() {
     var ul, li, value, i, element;
     ul = document.getElementById("reklamasjonsList");
     li = ul.getElementsByTagName('li');
-  
     for (i = 0; i < li.length; i++) {
       element = li[i];
         if (element.className == filter || filter == "") {
         element.style.display = "";
       } else {
-        element.style.display = "none";
+        element.style.display= "none";
       }
     };
   }

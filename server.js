@@ -1,5 +1,5 @@
 //devIntegrations
-if (process.env.NODE_ENV !== "production" || true) {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 //Require
@@ -43,17 +43,17 @@ app.use(
     redirect: false,
   })
 );
-// app.use(helmet());
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: true,
-//     directives: {
-//       "img-src": ["'self'", "https://res.cloudinary.com/djdcolqeg/image/upload/v1621797750/test/"],
-//       "style-src": ["'self'", "https://use.fontawesome.com/releases/v5.7.1/css/all.css", "https://fonts.gstatic.com"],
-//       "script-src": ["'self'", "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"]
-//     },
-//   })
-// );
+app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https://res.cloudinary.com/djdcolqeg/image/upload/v1621797750/test/", "/images", "/img"],
+      "style-src": ["'self'", "https://use.fontawesome.com/releases/v5.7.1/css/all.css", "https://fonts.gstatic.com", "'unsafe-inline'"],
+      "script-src": ["'self'", "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js", "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"]
+    },
+  })
+);
 //App set
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -65,7 +65,7 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: process.env.DB_URL,
-      touchAfter: 24 * 60 * 60 // = 14 days. Default
+      touchAfter: 60
     }),
   })
 );
@@ -97,6 +97,7 @@ app.use("/dashboard", isLoggedIn, dashboardRoute);
 const authRoute = require("./routes/authRoute");
 app.use("/auth", authRoute);
 //Launch server on Port
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+const port = process.env.PORT || 80;
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });

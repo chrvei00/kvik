@@ -2,3 +2,18 @@
 .noListStyle {
   list-style-type: none;
 }
+
+.backgroundImage {
+  background-image: url(/images/kvikMano3.jpg);
+}
+
+.fifty {
+  overflow: hidden;
+  max-width: 50ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hide {
+  display: none;
+}
