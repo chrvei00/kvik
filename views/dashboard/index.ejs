@@ -12,7 +12,7 @@
               <h4 class="mb-1 text-xl"><%= unsolved %> </h4>
             </div>
           </div>
-          <a class="stretched-link" href="/dashboard/reklamasjoner"></a>
+          <a class="stretched-link" href="/dashboard/reklamasjoner?solved=false"></a>
         </div>
       </div>
       <div class="col-md-6 col-12 mb-4">
@@ -23,7 +23,7 @@
               <h4 class="mb-1 text-xl"><%= solved %></h4>
             </div>
           </div>
-          <a class="stretched-link" href="/dashboard/reklamasjoner"></a>
+          <a class="stretched-link" href="/dashboard/reklamasjoner?solved=true"></a>
         </div>
       </div>
     </div>
@@ -89,12 +89,6 @@
               <h6 class="h5 p-1 mx-3 my-2 my-xl-0">Beskrivelse:</h6>
               <p
                 class="mb-0 mt-3 mt-lg-0 fifty"
-                style="
-                  overflow: hidden;
-                  max-width: 50ch;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                "
               >
                 <%= skjema.beskrivelse %>
               </p>

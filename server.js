@@ -65,7 +65,6 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: process.env.DB_URL,
-      touchAfter: 60
     }),
   })
 );

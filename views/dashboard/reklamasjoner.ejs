@@ -21,7 +21,7 @@
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
               id="searchInput"
-              onkeyup="searchFilter()"
+              disabled
             />
           </div>
         </div>
@@ -30,10 +30,10 @@
           <button class="btn btn-primary text-white text-uppercase" id="filterAll">Alle</button>
         </div>
         <div class="col-4 col-lg-1 p-2">
-          <button class="btn btn-danger text-white text-uppercase" id="filterUnsolved">Åpne</button>
+          <button class="btn btn-danger text-white text-uppercase <% if(filter == "false") { %> filter <% } %>" id="filterUnsolved">Åpne</button>
         </div>
         <div class="col-4 col-lg-1 p-2">
-          <button class="btn btn-success text-white text-uppercase" id="filterSolved">Fullførte</button>
+          <button class="btn btn-success text-white text-uppercase <% if(filter == "true") { %>filter<% } %>" id="filterSolved">Fullførte</button>
         </div>
       </div>
     </div>

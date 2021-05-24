@@ -10,14 +10,18 @@ router.use(async (req, res, next) => {
   res.locals.brukere = await users.find({});
   next();
 })
+//Functions
 //Routes
 router.get("/", (req, res) => {
   res.render("./dashboard/index.ejs", { layout: "dashLayout" });
 });
 
 router.get("/reklamasjoner", async (req, res) => {
+  const filter = req.query.solved;
+  console.log(filter);
   res.render("./dashboard/reklamasjoner.ejs", {
     layout: "dashLayout",
+    filter,
   });
 });
 

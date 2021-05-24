@@ -37,3 +37,9 @@ function searchFilter() {
       }
     };
   }
+
+  if(document.querySelector(".filter").id == "filterUnsolved") {
+    buttonFilter("false");
+  } else if(document.querySelector(".filter").id == "filterSolved") {
+    buttonFilter("true");
+  } else {};
