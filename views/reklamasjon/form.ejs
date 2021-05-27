@@ -68,8 +68,10 @@
         <form
           id="reklamasjon-form"
           method="POST"
-          action="/reklamasjon/send"
+          action="/reklamasjon"
           enctype="multipart/form-data"
+          class="needs-validation"
+          novalidate
         >
           <!-- Name input -->
           <div class="mb-3">
@@ -178,11 +180,12 @@
               />
             </div>
           </div>
-
           <button
+            class="g-recaptcha btn btn-success btn-block mt-4 mb-4 text-white"
+            data-sitekey="6LfDuuoaAAAAANTP7nY4EK7dv2mf90fL9dd90cjO"
+            data-callback="onSubmit"
             type="submit"
-            value="submit"
-            class="btn btn-success btn-block mt-4 mb-4"
+            data-action="submit"
           >
             Send inn
           </button>
@@ -191,3 +194,4 @@
     </div>
   </div>
 </div>
+<script src="/js/validate.js"></script>

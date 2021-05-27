@@ -22,7 +22,7 @@
               <h4 class="card-heading">Profil:</h4>
             </div>
             <div class="card-body">
-              <form class="form-horizontal" method="POST" action="/dashboard/users/edit/<%= bruker._id %>?_method=PUT">
+              <form class="form-horizontal" method="POST" action="/dashboard/users/<%= bruker._id %>?_method=PUT">
                 <div class="row">
                   <label class="col-md-3 form-label">Fullt navn</label>
                   <div class="col-md-9">
@@ -127,7 +127,7 @@
               <h4 class="card-heading">Endre passord:</h4>
             </div>
             <div class="card-body">
-              <form class="form-horizontal" method="POST" action="/dashboard/users/edit/password/<%= bruker._id %>?_method=PUT">
+              <form class="form-horizontal" method="POST" action="/dashboard/users/<%= bruker._id %>/password?_method=PUT">
                 <div class="row">
                   <label class="col-md-3 form-label">Nytt passord: </label>
                   <div class="col-md-9">
@@ -149,6 +149,27 @@
                     </button>
                     <button class="btn btn-success text-white" type="submit">
                       Oppdater
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-header">
+              <h4 class="card-heading">Slett bruker:</h4>
+            </div>
+            <div class="card-body">
+              <form class="form-horizontal" method="POST" action="/dashboard/users/<%= bruker._id %>?_method=delete">
+                <div class="row">
+                  <div class="col-md-9 ms-auto">
+                    <button class="btn btn-danger">
+                      <a href="/dashboard/users" class="text-decoration-none text-white"
+                        >Avbryt</a
+                      >
+                    </button>
+                    <button class="btn btn-warning text-white" type="submit">
+                      Slett
                     </button>
                   </div>
                 </div>

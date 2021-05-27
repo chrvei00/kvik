@@ -1,0 +1,14 @@
+<div class="container m-auto py-5">
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Error :(</h4>
+    <p>Det har desverre skjedd noe galt.</p>
+    <hr />
+    <h2><%= error.code %>, <%= error.msg %></h2>
+    <p class="my-3">
+      Grunner til erroret kan enten være at klient prøver å gå inn på en link
+      som ikke finnes. Hvis ikke, er det noe feil med serveren (kontakt
+      utvikleren).
+    </p>
+    <a class="btn btn-primary" href="/dashboard">Hjem</a>
+  </div>
+</div>

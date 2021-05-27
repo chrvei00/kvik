@@ -48,15 +48,15 @@
       <div class="d-flex align-items-stretch">
           <div class="sidebar py-3" id="sidebar">
             <h6 class="sidebar-heading">Meny</h6>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" id="sidebar">
               <li class="sidebar-list-item">
-                <a class="sidebar-link text-muted" href="/dashboard">
+                <a class="sidebar-link text-muted <%= page == "oversikt" ? "active": "" %>" href="/dashboard">
                   <svg class="svg-icon svg-icon-md me-3">
                     <use xlink:href="/icons/orion-svg-sprite.svg#real-estate-1"></use></svg>
                     <span class="sidebar-link-title">Oversikt</span></a>
               </li>
               <li class="sidebar-list-item">
-                <a class="sidebar-link text-muted" href="/dashboard/reklamasjoner">
+                <a class="sidebar-link text-muted <%= page == "reklamasjoner" ? "active": "" %>" href="/dashboard/reklamasjoner">
                   <svg class="svg-icon svg-icon-md me-3">
                     <use xlink:href="/icons/orion-svg-sprite.svg#paper-stack-1"></use></svg>
                     <span class="sidebar-link-title">Reklamasjoner</span></a>
@@ -69,7 +69,7 @@
                 >
               </li>
               <li class="sidebar-list-item">
-                <a class="sidebar-link text-muted" href="/dashboard/users">
+                <a class="sidebar-link text-muted <%= page == "brukere" ? "active": "" %>" href="/dashboard/users">
                   <svg class="svg-icon svg-icon-md me-3">
                     <use xlink:href="/icons/orion-svg-sprite.svg#man-1"></use></svg><span class="sidebar-link-title">Brukere</span></a
                 >

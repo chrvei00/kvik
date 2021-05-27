@@ -22,7 +22,12 @@
             <h4 class="card-heading">Skjema:</h4>
           </div>
           <div class="card-body">
-            <form class="form-horizontal" method="POST" action="/auth/newUser">
+            <form
+              class="form-horizontal needs-validation"
+              method="POST"
+              action="/dashboard/users/new"
+              novalidate
+            >
               <div class="row">
                 <label class="col-md-3 form-label">Fullt navn</label>
                 <div class="col-md-9">
@@ -133,3 +138,4 @@
     </div>
   </section>
 </div>
+<script src="/js/validate.js"></script>

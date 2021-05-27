@@ -18,14 +18,14 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                    <div class="col-md-1 ms-auto">
+                    <div class="col-md-1 px-5">
                         <form  action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST">
                             <button class="btn btn-<%= reklamasjon.finished ? "success": "danger"; %> text-white"> Status </button>
                       </form>
                     </div>
-                    <div class="col-md-11 ms-auto">
-                        <form  action="/dashboard/reklamasjoner" method="GET">
-                      <button class="btn btn-danger"> Tilbake </button>
+                    <div class="col-md-11 px-0">
+                        <form  action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=delete" method="POST">
+                      <button class="btn btn-danger"> Slett (ikke reversibelt) </button>
                       </form>
                     </div>
                   </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-9">
                         <% for (img of reklamasjon.images) {%> 
                           <div class="">
-                            <img src="<%= img.url %> " class="d-block" alt="...">
+                            <img src="<%= img.url %> " class="d-block img-thumbnail" alt="...">
                           </div>
                           <% } %> 
                     </div>
