@@ -41,17 +41,23 @@ module.exports.helmetCSPOptions = {
     "img-src": ["'self' data:", "https://res.cloudinary.com/"],
     "style-src": [
       "'self'",
+      "'unsafe-inline'",
+      "'nonce-gReCaptcha'",
       "https://fonts.googleapis.com/",
       "https://use.fontawesome.com/releases/v5.7.1/css/all.css",
       "https://fonts.gstatic.com",
-      "'unsafe-inline'",
     ],
     "script-src": [
       "'self'",
-      "https://www.gstatic.com/",
+      "https://www.gstatic.com/recaptcha/",
       "https://www.google.com/recaptcha/",
       "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js",
       "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
+      "https://www.google.com/",
+    ],
+    "frame-src": [
+      "https://www.google.com/recaptcha/",
+      "https://recaptcha.google.com/recaptcha/",
     ],
   },
 };

@@ -23,3 +23,25 @@ module.exports.sendReklamasjonBilder = upload.array("images");
 module.exports.renderForm = (req, res, next) => {
   res.render("./reklamasjon/form.ejs");
 };
+
+const request = require("request");
+module.exports.reCaptcha = function (req, res, next) {
+  if (
+    req.body["g-recaptcha-response"] === undefined ||
+    req.body["g-recaptcha-response"] === "" ||
+    req.body["g-recaptcha-response"] === null
+  ) {
+    return res.json({ responseError: "something goes to wrong" });
+  }
+  const secretKey = process.env.reCaptcha_SECRET_KEY;
+  const response = req.body["g-recaptcha-response"];
+  const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${response}&remoteip=${req.connection.remoteAddress}`;
+
+  const result = request(verificationURL, (err, response, body) => {
+    const result = JSON.parse(body);
+    if (result.success) {
+      return next();
+    }
+    return next(new eError());
+  });
+};

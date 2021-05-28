@@ -18,19 +18,21 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                    <div class="col-md-1 px-5">
+                    <div class="col-2">
                         <form  action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST">
                             <button class="btn btn-<%= reklamasjon.finished ? "success": "danger"; %> text-white"> Status </button>
                       </form>
                     </div>
-                    <div class="col-md-11 px-0">
+                    <div class="col-2 px-2">
                         <form  action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=delete" method="POST">
                       <button class="btn btn-danger"> Slett (ikke reversibelt) </button>
                       </form>
                     </div>
                   </div>
-                   <hr class="bg-gray-700 mt-4">
+                   <hr class="bg-gray-700 mt-2">
               </div>
+              <div class="row">
+                <div class="col-6">
               <div class="card-header">
                     <h5 class="h5">Kunde-info:</h3>
               </div>
@@ -42,58 +44,61 @@
                       <input value="<%= reklamasjon.name %> " class="form-control disabled" disabled type="text">
                     </div>
                   </div>
-                  <hr class="bg-gray-400 mt-4">
+                  <hr class="bg-gray-400 mt-2">
                   <div class="row">
                     <label class="col-md-3 form-label">Email:</label>
                     <div class="col-md-9">
                       <input value="<%= reklamasjon.email %> " class="form-control disabled" disabled type="email">
                     </div>
                   </div>
-                  <hr class="bg-gray-400 my-4">
+                  <hr class="bg-gray-400 my-2">
                   <div class="row">
                     <label class="col-md-3 form-label">Telefon:</label>
                     <div class="col-md-9">
                       <input value="<%= reklamasjon.telefon %> " class="form-control disabled" disabled type="tel">
                     </div>
                   </div>
-                  <hr class="bg-gray-400 my-4">
+                  <hr class="bg-gray-400 my-2">
                 </form>
               </div>
+            </div>
+            <div class="col-6">
               <div class="card-header">
                     <h5 class="h5">Ordre-info:</h3>
               </div>
               <div class="card-body">
                 <form class="form-horizontal">
                   <div class="row">
-                    <label class="col-md-3 form-label">Ordrenummer:</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4 form-label">Ordrenummer:</label>
+                    <div class="col-md-8">
                       <input value="<%= reklamasjon.ordnr %> " class="form-control disabled" disabled type="text">
                     </div>
                   </div>
                   <hr class="bg-gray-400 mt-4">
                   <div class="row">
-                    <label class="col-md-3 form-label">Bestilt med montering:</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4 form-label">Bestilt med montering:</label>
+                    <div class="col-md-8">
                       <input value="<%= reklamasjon.montering %> " class="form-control disabled" disabled type="text">
                     </div>
                   </div>
                   <hr class="bg-gray-400 mt-4">
                   <div class="row">
-                    <label class="col-md-3 form-label">Kjøpsdato:</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4 form-label">Kjøpsdato:</label>
+                    <div class="col-md-8">
                       <input value="<%= reklamasjon.buydate %> " class="form-control disabled" disabled type="text">
                     </div>
                   </div>
                   <hr class="bg-gray-400 my-4">
                   <div class="row">
-                    <label class="col-md-3 form-label">Reklamasjonsdato:</label>
-                    <div class="col-md-9">
+                    <label class="col-md-4 form-label">Reklamasjonsdato:</label>
+                    <div class="col-md-8">
                       <input value="<%= reklamasjon.reklamasjonsdate %>" class="form-control disabled" disabled type="text">
                     </div>
                   </div>
-                  <hr class="bg-gray-400 my-4">
                 </form>
               </div>
+            </div>
+          </div>
               <div class="card-header">
                     <h5 class="h5">Reklamasjon-info:</h3>
               </div>
