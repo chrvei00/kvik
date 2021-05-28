@@ -8,7 +8,6 @@ module.exports.renderLogin = (req, res) => {
     res.redirect("/dashboard");
     return;
   }
-  req.flash("error", "Username or password is wrong.");
   res.render("auth/signIn.ejs");
 };
 
@@ -19,10 +18,12 @@ module.exports.redirectOnAuth = (req, res) => {
 
 module.exports.logOut = (req, res) => {
   req.logout();
+  req.flash("success", "Logget ut!");
   res.redirect("/");
 };
 
 //Middleware
 module.exports.authenticate = passport.authenticate("local", {
   failureRedirect: "/dashboard",
+  failureFlash: true,
 });

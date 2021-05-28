@@ -34,6 +34,7 @@ module.exports.renderReklamasjon = catchAsync(async (req, res, next) => {
 module.exports.updateReklamasjon = catchAsync(async (req, res, next) => {
   res.locals.reklamasjon.finished = !res.locals.reklamasjon.finished;
   await res.locals.reklamasjon.save();
+  req.flash("success", "Status oppdatert");
   res.redirect(`/dashboard/reklamasjoner/${res.locals.reklamasjon._id}`);
 });
 

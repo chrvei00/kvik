@@ -5,13 +5,14 @@ const router = express.Router();
 const controller = require("../controllers/auth");
 //Middleware
 const { isLoggedIn } = require("../middleware/auth");
+const { validateLogin } = require("../middleware/validate");
 
 //Routes
 router
   .route("/")
   .get(controller.renderLogin)
-  .post(controller.authenticate, controller.redirectOnAuth);
+  .post(validateLogin, controller.authenticate, controller.redirectOnAuth);
 
-router.get("/logout", controller.logOut);
+router.get("/logout", isLoggedIn, controller.logOut);
 
 module.exports = router;

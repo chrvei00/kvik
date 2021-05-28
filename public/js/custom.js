@@ -57,7 +57,10 @@ if (document.querySelector(".filter")) {
   }
 }
 
-function onSubmit(token) {
-  console.log("hello verden");
-  document.getElementById("reklamasjon-form").submit();
+if (document.querySelector(".flash")) {
+  document.addEventListener("keyup", (e) => {
+    if (e.key == "Escape") {
+      document.querySelector(".flash").style.display = "none";
+    }
+  });
 }

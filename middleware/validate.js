@@ -44,9 +44,22 @@ const validateBruker = (req, res, next) => {
   } else next();
 };
 
+//bruker-validation
+const loginValSchema = joi.object({
+  username: joi.string().email().required(),
+  password: joi.string().required(),
+});
+
+const validateLogin = (req, res, next) => {
+  const { error } = loginValSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new eError(msg, 400);
+  } else next();
+};
+
 module.exports = {
-  reklamasjonValSchema,
   validateReklamasjon,
-  brukerValSchema,
   validateBruker,
+  validateLogin,
 };
