@@ -19,5 +19,6 @@ module.exports.redirectDashboard = (req, res) => {
 
 module.exports.renderIndex = catchAsync(async (req, res, next) => {
   const reklamasjoner = await reklamasjonForm.find({});
+  reklamasjoner.reverse();
   res.render("dashboard/index.ejs", { reklamasjoner });
 });
