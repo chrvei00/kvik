@@ -1,4 +1,5 @@
 
+    <% const permission = (currentuser._id.toString() == bruker._id.toString() || currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler" ) %> 
     <!-- Breadcrumbs -->
     <div class="page-breadcrumb">
       <ul class="breadcrumb">
@@ -32,6 +33,8 @@
                       name="name"
                       value="<%= bruker.name %>"
                       required
+                      <% if(currentuser._id.toString() == bruker._id.toString()) %> 
+                      <%= permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -45,6 +48,7 @@
                       name="telefon"
                       value="<%= bruker.telefon %>"
                       required
+                      <%= permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -58,6 +62,7 @@
                       name="username"
                       value="<%= bruker.username %>"
                       required
+                      <%= permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -74,6 +79,7 @@
                         value="true"
                         required
                         <%= bruker.sex == "true" ? "checked": "" %>
+                        <%= permission? "": "disabled" %>
                       />
                       <label class="custom-control-label" for="customRadioInline1"
                         >Mann</label
@@ -88,6 +94,7 @@
                         value="false"
                         required
                         <%= bruker.sex == "false" ? "checked": "" %>
+                        <%= permission? "": "disabled" %>
                       />
                       <label class="custom-control-label" for="customRadioInline2"
                         >Kvinne</label
@@ -99,7 +106,9 @@
                 <div class="row">
                   <label class="col-md-3 form-label">Rolle</label>
                   <div class="col-md-9 ms-auto select">
-                    <select class="form-control rounded" name="rolle" required>
+                    <% if(currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler") {  %> 
+                    <select class="form-control rounded" name="rolle" required> <% } else { %>
+                      <select class="form-control rounded" name="rolle" required disabled> <% } %> 
                       <option value="ansatt" <%= bruker.rolle == "ansatt" ? "selected": "" %>>Ansatt</option>
                       <option value="admin" <%= bruker.rolle == "admin" ? "selected": "" %>>Admin</option>
                       <option value="utvikler" <%= bruker.rolle == "utvikler" ? "selected": "" %>>Utvikler</option>
@@ -114,7 +123,7 @@
                         >Avbryt</a
                       >
                     </button>
-                    <button class="btn btn-success text-white" type="submit">
+                    <button class="btn btn-success text-white" type="submit"  <%= permission? "": "disabled" %>>
                       Oppdater
                     </button>
                   </div>
@@ -122,6 +131,7 @@
               </form>
             </div>
           </div>
+          <% if(permission) { %> 
           <div class="card mt-4">
             <div class="card-header">
               <h4 class="card-heading">Endre passord:</h4>
@@ -155,6 +165,9 @@
               </form>
             </div>
           </div>
+          <% }; %> 
+          <% if((currentuser.rolle.toString() == "admin" && currentuser._id.toString() != bruker._id.toString())|| currentuser.rolle.toString() == "utvikler") { %> 
+
           <div class="card mt-4">
             <div class="card-header">
               <h4 class="card-heading">Slett bruker:</h4>
@@ -176,6 +189,7 @@
               </form>
             </div>
           </div>
+          <% }; %> 
         </div>
       </div>
     </section>
