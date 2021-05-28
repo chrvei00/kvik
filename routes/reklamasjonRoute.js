@@ -11,6 +11,7 @@ router
   .get(controller.renderForm)
   .post(
     controller.sendReklamasjonBilder,
+    validateReklamasjon,
     controller.reCaptcha,
     controller.sendReklamasjon
   );

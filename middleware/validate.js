@@ -15,6 +15,7 @@ const reklamasjonValSchema = joi.object({
       beskrivelse: joi.string().required(),
     })
     .required(),
+  "g-recaptcha-response": joi.string(),
 });
 
 const validateReklamasjon = (req, res, next) => {
