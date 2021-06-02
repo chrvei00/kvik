@@ -13,7 +13,7 @@ module.exports.staticOptions = {
   etag: true,
   extensions: "ejs",
   index: false,
-  maxAge: "7d",
+  maxAge: 3600000,
   redirect: false,
 };
 
