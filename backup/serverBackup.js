@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 //Controllers
-const controller = require("./controllers/serverController");
+const controller = require("../controllers/serverController");
 //Require
 const express = require("express");
 const app = express();
@@ -25,11 +25,11 @@ recaptcha = new Recaptcha(
   { callback: "cb" }
 );
 //Schema
-const User = require("./models/userModel");
+const User = require("../models/userModel");
 //Middleware
-const { isLoggedIn } = require("./middleware/auth");
+const { isLoggedIn } = require("../middleware/auth");
 //ErrorClass
-const { eError } = require("./middleware/error");
+const { eError } = require("../middleware/error");
 //Database setup
 mongoose
   .connect(process.env.DB_URL, {
@@ -112,11 +112,11 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", (req, res) => {
   res.redirect("/dashboard");
 });
-const reklamasjonRoute = require("./routes/reklamasjonRoute");
+const reklamasjonRoute = require("../routes/reklamasjonRoute");
 app.use("/reklamasjon", reklamasjonRoute);
-const dashboardRoute = require("./routes/dashboardRoute");
+const dashboardRoute = require("../routes/dashboardRoute");
 app.use("/dashboard", isLoggedIn, dashboardRoute);
-const authRoute = require("./routes/authRoute");
+const authRoute = require("../routes/authRoute");
 app.use("/auth", authRoute);
 app.all("*", (req, res, next) => {
   next(new eError("not found", 404));

@@ -7,6 +7,10 @@
   background-image: url(/images/kvikMano3.jpg);
 }
 
+.formImage {
+  size: 100px;
+}
+
 .fifty {
   overflow: hidden;
   max-width: 50ch;
@@ -20,4 +24,10 @@
 
 .logoStyles {
   height: 90px;
+}
+
+.lineChartCustom1 {
+  display: block;
+  width: 469px;
+  height: 234px;
 }

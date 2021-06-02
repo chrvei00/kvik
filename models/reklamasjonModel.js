@@ -9,28 +9,36 @@ const reklamasjonFormSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  telefon: {
+  phone: {
     type: String,
     required: true,
   },
-  ordnr: {
+  store: {
     type: String,
     required: true,
   },
-  buydate: {
+  seller: {
+    type: String,
+    required: true,
+  },
+  orderNumber: {
+    type: String,
+    required: true,
+  },
+  orderDate: {
     type: Date,
     required: true,
   },
-  reklamasjonsdate: {
+  reklamasjonsDate: {
     type: Date,
     default: Date.now(),
     required: true,
   },
-  montering: {
+  assembly: {
     type: Boolean,
     required: true,
   },
-  beskrivelse: {
+  description: {
     type: String,
     required: true,
   },
@@ -40,20 +48,43 @@ const reklamasjonFormSchema = new mongoose.Schema({
       filename: String,
     },
   ],
-  finished: {
+  status: {
     type: Boolean,
     default: false,
   },
-  note: {
-    content: String,
-    username: String,
-    dato: Date,
+  expectedFinished: {
+    type: Date,
+    default: Date.now() + 12096e5,
   },
-  sett: [
+  finished: {
+    type: Date,
+  },
+  notes: [
     {
+      content: String,
       username: String,
+      date: Date,
     },
   ],
+  caseNumber: {
+    type: String,
+    default: Date.now().toString().substr(7),
+  },
+  stats: {
+    seen: [
+      {
+        userId: {
+          type: String,
+        },
+        seenDate: {
+          type: Date,
+        },
+      },
+    ],
+    finishedInTime: {
+      type: Boolean,
+    },
+  },
 });
 
 module.exports = mongoose.model("Reklamasjon", reklamasjonFormSchema);

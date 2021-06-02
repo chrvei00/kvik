@@ -8,11 +8,13 @@ const reklamasjonValSchema = joi.object({
     .object({
       name: joi.string().required(),
       email: joi.string().email().email().required(),
-      telefon: joi.number().required(),
-      ordnr: joi.string().min(8).required(),
-      buydate: joi.date().greater("1-1-2000").less("now").required(),
-      montering: joi.boolean().required(),
-      beskrivelse: joi.string().required(),
+      phone: joi.number().required(),
+      store: joi.string().required(),
+      seller: joi.string().required(),
+      orderNumber: joi.string().min(8).max(8).required(),
+      orderDate: joi.date().greater("1-1-2000").less("now").required(),
+      assembly: joi.boolean().required(),
+      description: joi.string().required(),
     })
     .required(),
   "g-recaptcha-response": joi.string().required(),

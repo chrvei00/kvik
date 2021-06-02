@@ -1,0 +1,143 @@
+<!-- Page Header-->
+<div class="page-header d-flex justify-content-between align-items-center">
+  <h1 class="page-heading">Åpen reklamasjon</h1>
+</div>
+<section class="mb-4">
+  <div class="px-5 py-3 mb-4">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="input-group flex-nowrap">
+          <select class="form-select" id="searchFilter">
+            <option value="" selected>Alt</option>
+            <option value="name">Navn</option>
+            <option value="caseNumber">Saksnummer</option>
+            <option value="description">Beskrivelse</option>
+          </select>
+          <input
+            type="text"
+            class="form-control w-75"
+            placeholder="Søk..."
+            id="searchInput"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group flex-nowrap">
+          <select class="form-select" id="sortOrder">
+            <option value="" selected>Dato</option>
+            <option value="old">Eldste først</option>
+            <option value="new">Nyeste først</option>
+          </select>
+          <select class="form-select" id="sortStore">
+            <option value="" selected>Butikk</option>
+            <option value="1000">Hønefoss</option>
+            <option value="2000">Drammen</option>
+            <option value="3000">Slependen</option>
+          </select>
+          <button type="button" id="filter" class="btn btn-outline-secondary">
+            Filtrer
+          </button>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="input-group flex-nowrap">
+          <button
+            type="button"
+            id="resetFilter"
+            class="btn btn-outline-secondary"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="text-gray-700" />
+</section>
+<section class="mb-4">
+  <ul id="reklamasjonsList" class="noListStyle">
+    <div class="row" id="rekList">
+      <% for (skjema of uferdigReklamasjon){ %>
+      <li class="<%= skjema.finished %>">
+        <div class="col-12">
+          <a
+            class="
+              message
+              card
+              px-5
+              py-3
+              mb-4
+              bg-hover-gradient-red
+              border border-danger
+              text-decoration-none text-reset
+            "
+            href="/dashboard/reklamasjoner/<%= skjema._id %>"
+          >
+            <div class="row">
+              <div
+                class="
+                  col-xl-1
+                  d-flex
+                  align-items-center
+                  flex-column flex-xl-row
+                  text-center text-md-left
+                  date
+                "
+                id="date"
+              >
+                <span class="mb-0 text-muted">
+                  <%= skjema.reklamasjonsDate.getDate() %> /
+                  <%=skjema.reklamasjonsDate.getMonth() %> /
+                  <%=skjema.reklamasjonsDate.getFullYear() %>
+                </span>
+              </div>
+              <div
+                class="
+                  col-xl-2
+                  d-flex
+                  align-items-center
+                  flex-column flex-xl-row
+                  text-center text-md-left
+                  name
+                "
+                id="name"
+              >
+                <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.name %></h6>
+              </div>
+              <div
+                class="
+                  col-xl-2
+                  d-flex
+                  align-items-center
+                  flex-column flex-xl-row
+                  text-center text-md-left
+                  caseNumber
+                "
+                id="caseNumber"
+              >
+                <h6 class="h5 p-1 mx-3 my-2 my-xl-0">
+                  <%= skjema.caseNumber %>
+                </h6>
+              </div>
+              <div
+                class="
+                  col-xl-7
+                  d-flex
+                  align-items-center
+                  flex-column flex-xl-row
+                  text-center text-md-left
+                  description
+                "
+                id="description"
+              >
+                <h6 class="h5 p-1 mx-3 my-2 my-xl-0">Beskrivelse:</h6>
+                <p class="mb-0 mt-3 mt-lg-0 fifty"><%= skjema.description %></p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </li>
+      <% } %>
+    </div>
+  </ul>
+</section>

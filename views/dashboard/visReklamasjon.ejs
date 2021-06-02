@@ -1,0 +1,224 @@
+    <!-- Breadcrumbs -->
+    <div class="page-breadcrumb">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Hjem</a></li>
+        <% if (reklamasjon.status) { %> 
+        <li class="breadcrumb-item"><a href="/dashboard/reklamasjoner/arkivert">Reklamasjoner</a></li>
+        <% } else { %> 
+          <li class="breadcrumb-item"><a href="/dashboard/reklamasjoner/uferdig">Reklamasjoner</a></li>
+        <% } %> 
+        <li class="breadcrumb-item active"><%= reklamasjon.name %> </li>
+      </ul>
+    </div>
+    <!-- Page Header-->
+    <div class="page-header">
+      <h1 class="page-heading">Reklamasjon - <%= reklamasjon.name %> </h1>
+      <p>Saksnummer: <%= reklamasjon.caseNumber %></p>
+    </div>
+    <section>
+      <div class="row mb-3">
+        <div class="col">
+        <div class="card">
+          <div class="card-body">
+              <div class="row">
+                <div class="col-2 my-auto">
+                  Status: <%= reklamasjon.status ? "Arkivert": "Åpen"; %>
+                </div>
+                <div class="col my-auto">
+                  Reklamasjon åpnet: <span class="mx-2"><%= reklamasjon.reklamasjonsDate.getDate() %> / <%=reklamasjon.reklamasjonsDate.getMonth() %> / <%=reklamasjon.reklamasjonsDate.getFullYear() %></span>
+                </div>
+                <div class="col my-auto">
+                  Forventet ferdig: <span class="mx-2"><%= reklamasjon.expectedFinished.getDate() %> / <%=reklamasjon.expectedFinished.getMonth() %> / <%=reklamasjon.expectedFinished.getFullYear() %></span>
+                </div>
+                <div class="col-3">
+                  <form class="my-auto" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST"><button class="btn btn-<%= reklamasjon.status ? "success": "danger"; %> text-white"> Endre status </button></form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="page-heading m-0">Notater:
+              </h3>
+            </div>
+            <div class="card-body">
+              <form action="/dashboard/reklamasjoner/<%= reklamasjon._id %>/newNote?_method=PUT" method="POST">
+                  <div class="row">
+                    <div class="col-3">
+                    <button class="btn btn-primary" type="submit">
+                      Legg til
+                    </button>
+                  </div>
+                    <div class="col">
+                  <textarea
+                  id="notat"
+                  class="form-control"
+                  name="content"
+                  rows="1"
+                  required
+                ></textarea></div>
+                <div class="col-2">
+              
+              </div>
+              </form>
+              <% for (note of reklamasjon.notes) { %> 
+              <hr class="bg-gray-400 my-4">
+              <div class="row">
+                <div class="col-3">
+                  <%= note.date.getDate() %> / <%= note.date.getMonth() %> / <%= note.date.getFullYear() %> - <%= note.username %> 
+                </div>
+                <div class="col-8">
+                  <%= note.content %> 
+                </div>
+                <div class="col-1">
+                  <form action="/dashboard/reklamasjoner/note/<%= reklamasjon._id %>/<%= note._id %>?_method=delete" method="POST"><button class="btn">slett</button></form>
+                </div>
+              </div>
+              <% } %> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="page-heading m-0">Reklamasjon:
+              </h3>
+            </div>
+            <div class="row">
+              <div class="col">
+            <div class="card-body">
+              <h5 class="text-muted mb-3">Kunde-info:</h5>
+              <div class="row mb-2">
+                <div class="col">
+                  Navn:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.name %> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Email:
+                </div>
+                <div class="col">
+                  <a href="mailto:<%= reklamasjon.email %> "><%= reklamasjon.email %></a> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Telefon:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.phone %> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h5 class="text-muted mb-3">Ordre-info:</h5>
+              <div class="row mb-2">
+                <div class="col">
+                  Ordrenummer:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.orderNumber %> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Kjøpsdato:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.orderDate.getDate() %> / <%=reklamasjon.orderDate.getMonth() %> / <%=reklamasjon.orderDate.getFullYear() %> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Montering av kvik:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.assembly %> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Butikk:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.store %> 
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  Selger:
+                </div>
+                <div class="col">
+                  <%= reklamasjon.seller %> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h5 class="text-muted mb-3">Beskrivelse:</h5>
+              <div class="row mb-2">
+                <div class="col">
+                  <%= reklamasjon.description %> 
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <hr class="bg-gray-400 mt-2">
+          <% if(reklamasjon.images.length) { %> 
+          <div class="row">
+            <div class="col">
+            <div class="card-body">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal">
+                Vis bilder
+              </button>
+            </div>
+            </div>
+          </div>
+          <% } %> 
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+              <div class="carousel-inner">
+                <% reklamasjon.images.forEach((img, i) => {%> 
+                  <div class="carousel-item <%= i === 0 ? "active": ""; %> ">
+                    <img src="<%= img.url %> " class="d-block w-100 h-100" alt="...">
+                  </div>
+                  <% }); %> 
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

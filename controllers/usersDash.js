@@ -33,6 +33,7 @@ module.exports.saveNewUser = catchAsync(async (req, res, next) => {
     username,
   });
   const savedUser = await User.register(user, password);
+  const updatedUser = await User.findByIdAndUpdate(savedUser._id, { sex });
   res.redirect("/dashboard/users");
 });
 

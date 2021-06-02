@@ -56,12 +56,17 @@
                     <span class="sidebar-link-title">Oversikt</span></a>
               </li>
               <li class="sidebar-list-item">
-                <a class="sidebar-link text-muted <%= page == "reklamasjoner" ? "active": "" %>" href="/dashboard/reklamasjoner">
+                <a class="sidebar-link text-muted <%= page == "uferdigReklamasjon" ? "active": "" %>" href="/dashboard/reklamasjoner/uferdig">
                   <svg class="svg-icon svg-icon-md me-3">
                     <use xlink:href="/icons/orion-svg-sprite.svg#paper-stack-1"></use></svg>
-                    <span class="sidebar-link-title">Reklamasjoner</span></a>
+                    <span class="sidebar-link-title">Åpne saker</span></a>
               </li>
-
+              <li class="sidebar-list-item">
+                <a class="sidebar-link text-muted <%= page == "arkivertReklamasjon" ? "active": "" %>" href="/dashboard/reklamasjoner/arkivert">
+                  <svg class="svg-icon svg-icon-md me-3">
+                    <use xlink:href="/icons/orion-svg-sprite.svg#paper-stack-1"></use></svg>
+                    <span class="sidebar-link-title">Arkiverte saker</span></a>
+              </li>
               <li class="sidebar-list-item">
                 <a class="sidebar-link text-muted disabled text-decoration-line-through" href="/dashboard">
                   <svg class="svg-icon svg-icon-md me-3">
@@ -98,5 +103,6 @@
 
     <!-- Scripts -->
     <%- include('./partials/scripts.ejs') %>
+    <!-- Charts -->
   </body>
 </html>

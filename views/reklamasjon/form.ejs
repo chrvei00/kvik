@@ -28,7 +28,6 @@
     </div>
   </div>
   <div class="container mt-3"></div>
-
   <div class="container">
     <div class="row">
       <div class="col">
@@ -56,8 +55,16 @@
         </p>
         <p>
           Trenger du hjelp til å fylle ut skjemaet? Ring oss gjerne på xxxxxxxx
-          eller <a href="mailto:">Send en mail.</a>
+          eller <a href="mailto:">send en mail.</a>
         </p>
+        <div class="d-none d-lg-block">
+          <img
+            class="thumbnail mt-5"
+            src="/images/kvikmano.jpg"
+            alt="..."
+            width="430"
+          />
+        </div>
       </div>
       <div class="col">
         <form
@@ -69,7 +76,7 @@
           novalidate
         >
           <!-- Name input -->
-          <div class="mb-3">
+          <div class="mb-2">
             <label class="form-label" for="navn">Navn:</label>
             <input
               class="form-control"
@@ -80,7 +87,7 @@
               required
             />
           </div>
-          <div class="mb-3">
+          <div class="mb-2">
             <label for="email" class="form-label">Email:</label>
             <input
               class="form-control"
@@ -91,53 +98,91 @@
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="telefon" class="form-label">Telefonnummer:</label>
+          <div class="mb-2 select">
+            <label for="phone" class="form-label">Telefonnummer:</label>
             <input
               class="form-control"
               type="tel"
-              id="telefon"
+              id="phone"
               placeholder="telefon"
-              name="reklamasjon[telefon]"
+              name="reklamasjon[phone]"
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="ordnr" class="form-label"
-              >Ordrenummer (eks: TI3743434)</label
+          <div class="mb-2">
+            <label class="form-label" for="store">Butikk:</label>
+            <select
+              class="form-select"
+              id="store"
+              name="reklamasjon[store]"
+              required
+            >
+              <option value="" disabled selected>Velg butikk</option>
+              <option value="Drammen">Kvik Drammen</option>
+              <option value="Hønefoss">Kvik Hønefoss</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label" for="seller">Selger:</label>
+            <select
+              class="form-select rounded"
+              id="seller"
+              name="reklamasjon[seller]"
+              required
+            >
+              <option value="" disabled selected>Velg selger</option>
+              <option value="Mehran Marandi">Mehran Marandi</option>
+              <option value="Lisa Alexandra Nilsen">
+                Lisa Alexandra Nilsen
+              </option>
+              <option value="Laila Dahl Reistad">Laila Dahl Reistad</option>
+              <option value="Anniken Reneflot">Anniken Reneflot</option>
+              <option value="Andrea Rustand">Andrea Rustand</option>
+              <option value="Gulhan Øzkurt">Gulhan Øzkurt</option>
+              <option value="Marianne Røste Fjeldstad">
+                Marianne Røste Fjeldstad
+              </option>
+              <option value="Erik Didriksen">Erik Didriksen</option>
+              <option value="Rodrigo Brasil">Rodrigo Brasil</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="orderNumber" class="form-label"
+              >Ordrenummer (eks: TI654321)</label
             >
             <input
               class="form-control"
               type="text"
-              id="ordnr"
-              placeholder="ord.nr."
-              name="reklamasjon[ordnr]"
-              maxlength="10"
+              id="orderNumber"
+              placeholder="TI..."
+              name="reklamasjon[orderNumber]"
+              maxlength="8"
+              minlength="8"
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="buydate" class="form-label">Kjøpsdato</label>
+          <div class="mb-2">
+            <label for="orderDate" class="form-label">Kjøpsdato</label>
             <input
               class="form-control"
               type="date"
-              id="buydate"
-              name="reklamasjon[buydate]"
+              id="orderDate"
+              name="reklamasjon[orderDate]"
               placeholder="yyyy-mm-dd"
               required
             />
           </div>
-          <div class="mb3">
+          <div class="mb-2">
             <div>
-              <label class="form-label" for="montering"
+              <label class="form-label" for="assembly"
                 >Bestilte du montering igjennom Kvik?</label
               >
             </div>
-            <div class="form-check form-check-inline" id="montering">
+            <div class="form-check form-check-inline" id="assembly">
               <input
                 class="form-check-input"
                 type="radio"
-                name="reklamasjon[montering]"
+                name="reklamasjon[assembly]"
                 id="inlineRadio1"
                 value="true"
                 required
@@ -148,31 +193,32 @@
               <input
                 class="form-check-input"
                 type="radio"
-                name="reklamasjon[montering]"
+                name="reklamasjon[assembly]"
                 id="inlineRadio2"
                 value="false"
               />
               <label class="form-check-label" for="inlineRadio2">Nei</label>
             </div>
-            <div class="mb-3">
-              <label class="form-label" for="beskrivelse"
+            <div class="mb-2">
+              <label class="form-label" for="description"
                 >Beskrivelse av skaden:
               </label>
               <textarea
                 id="beskrivelse"
                 class="form-control"
                 aria-label="With textarea"
-                name="reklamasjon[beskrivelse]"
+                name="reklamasjon[description]"
                 required
               ></textarea>
             </div>
-            <div class="mb-3">
-              <label for="bilde" class="form-label">Last opp bilde(r):</label>
+            <div class="mb-2">
+              <label for="images" class="form-label">Last opp bilder:</label>
               <input
                 class="form-control"
                 type="file"
                 id="images"
                 name="images"
+                accept="image/*"
                 multiple
               />
             </div>

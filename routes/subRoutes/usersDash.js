@@ -5,6 +5,9 @@ const subRouter = express.Router();
 //Controllers
 const controller = require("../../controllers/usersDash");
 
+//Middleware
+const { isAdmin } = require("../../middleware/auth");
+
 //DB import & Layout
 subRouter.use(controller.findUsers);
 
@@ -14,7 +17,7 @@ subRouter.get("/", controller.renderUsers);
 subRouter
   .route("/new")
   .get(controller.renderNewUserForm)
-  .post(controller.saveNewUser);
+  .post(isAdmin, controller.saveNewUser);
 
 subRouter
   .route("/:id")

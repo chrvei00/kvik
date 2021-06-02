@@ -12,9 +12,12 @@ module.exports.sendReklamasjon = catchAsync(async (req, res, next) => {
   // //Parse input
   const form = new reklamasjonForm(req.body.reklamasjon);
   form.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+  console.log(form.caseNumber);
+  form.caseNumber = await getLastandIncrement(form.store);
+  console.log(form.caseNumber);
   //Save to DB
   await form.save();
-  req.flash("success", "sendt!");
+  req.flash("success", "Sendt!");
   res.status(201).render("./reklamasjon/formSubmitted.ejs");
 });
 
@@ -45,3 +48,21 @@ module.exports.reCaptcha = function (req, res, next) {
     return next(new eError());
   });
 };
+async function getLastandIncrement(store) {
+  if (!(await reklamasjonForm.exists({ store: store }))) {
+    if (store.toString() == "Hønefoss") {
+      return "1001";
+    } else if (store.toString() == "Drammen") {
+      return "2001";
+    } else if (store.toString() == "Slependen") {
+      return "3001";
+    } else {
+      return "9001";
+    }
+  }
+  const last = await reklamasjonForm
+    .find({ store: store })
+    .sort({ _id: -1 })
+    .limit(1);
+  return (parseInt(last[0].caseNumber) + 1).toString();
+}

@@ -1,123 +1,194 @@
-<% var solved = 0; var unsolved = 0; %> <% for (skjema of reklamasjoner){ %> <%
-skjema.finished ? solved++: unsolved++;%> <% } %>
-<section class="mb-4 mb-lg-5">
+<section class="mb-1 mb-lg-2">
   <div class="row text-dark">
     <div class="col-md-6 col-12 mb-4">
       <div class="card bg-hover-gradient-red">
         <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3 py-5">
-          <div class="fw-light pb-3">Uløste saker</div>
+          <div class="fw-light pb-3">Åpne saker</div>
           <h4 class="mb-1 text-xl"><%= unsolved %></h4>
         </div>
-        <a
-          class="stretched-link"
-          href="/dashboard/reklamasjoner?solved=false"
-        ></a>
+        <a class="stretched-link" href="/dashboard/reklamasjoner/uferdig"></a>
       </div>
     </div>
     <div class="col-md-6 col-12 mb-4">
       <div class="card bg-hover-gradient-green">
         <div class="text-uppercase flex-shrink-0 m-auto text-center fs-3 py-5">
-          <div class="fw-light pb-3">Fullførte saker</div>
+          <div class="fw-light pb-3">Arkiverte saker</div>
           <h4 class="mb-1 text-xl"><%= solved %></h4>
         </div>
-        <a
-          class="stretched-link"
-          href="/dashboard/reklamasjoner?solved=true"
-        ></a>
+        <a class="stretched-link" href="/dashboard/reklamasjoner/arkivert"></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mb-3 mb-lg-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <span class="mx-4">Kopier linken til reklamasjonsskjema: </span> <input readonly="readonly" type="text" id="reklamasjonLink" value="domene/reklamasjon"> <button id="kopierReklamasjonLink" class="btn mx-4 text-decoration-underline">Kopier</button> <a href="/reklamasjon">Gå til skjemaet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mb-3 mb-lg-4">
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="page-heading m-0">Notater:
+          </h3>
+        </div>
+        <div class="card-body">
+          <form action="/dashboard/newNote?_method=PUT" method="POST">
+              <div class="row">
+                <div class="col-3">
+                <button class="btn btn-primary" type="submit">
+                  Legg til
+                </button>
+              </div>
+                <div class="col">
+              <textarea
+              id="notat"
+              class="form-control"
+              name="content"
+              rows="1"
+              required
+            ></textarea></div>
+            <div class="col-2">
+          </div>
+          </form>
+          <% for (note of indexNotes) { %> 
+          <hr class="bg-gray-400 my-4">
+          <div class="row">
+            <div class="col-3">
+              <%= note.date.getDate() %> / <%= note.date.getMonth() %> / <%= note.date.getFullYear() %> - <%= note.username %> 
+            </div>
+            <div class="col-8">
+              <%= note.content %> 
+            </div>
+            <div class="col-1">
+              <form action="/dashboard/<%= note._id %>?_method=delete" method="POST"><button class="btn btn-muted">slett</button></form>
+            </div>
+          </div>
+          <% } %> 
+        </div>
       </div>
     </div>
   </div>
 </section>
 <section class="mb-4 mb-lg-5">
-  <h2 class="section-heading section-heading-ms mb-4 mb-lg-5">Nyeste saker:</h2>
-  <ul id="reklamasjonsList" class="noListStyle">
-    <div class="row">
-      <% for (skjema of reklamasjoner){ %>
-      <li class="<%= skjema.finished %>">
-        <div class="col-12">
-          <a
-            class="
-              message
-              card
-              px-5
-              py-3
-              mb-4
-              <%
-              if
-              (!skjema.finished)
-              {
-              %>
-              bg-hover-gradient-red
-              border border-danger
-              <%
-              }
-              else
-              {
-              %>
-              bg-hover-gradient-green
-              border border-success
-              <%
-              }
-              %>
-              text-decoration-none text-reset
-            "
-            href="/dashboard/reklamasjoner/<%= skjema._id %>"
-          >
-            <div class="row">
-              <div
-                class="
-                  col-xl-1
-                  d-flex
-                  align-items-center
-                  flex-column flex-xl-row
-                  text-center text-md-left
-                "
-              >
-                <span class="mb-0 text-muted">
-                  <%= skjema.reklamasjonsdate.getDate() %> /
-                  <%=skjema.reklamasjonsdate.getMonth() %> /
-                  <%=skjema.reklamasjonsdate.getFullYear() %>
-                </span>
+  <div class="row">
+    <div class="col-lg-7 mb-4 mb-lg-0">
+      <div class="card h-100">
+        <div class="card-header">
+          <h4 class="card-heading">Reklamasjoner per mnd</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-holder">
+            <div class="chartjs-size-monitor">
+              <div class="chartjs-size-monitor-expand">
+                <div class=""></div>
               </div>
-              <div
-                class="
-                  col-xl-2
-                  d-flex
-                  align-items-center
-                  flex-column flex-xl-row
-                  text-center text-md-left
-                "
-              >
-                <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.name %></h6>
-              </div>
-              <div
-                class="
-                  col-xl-3
-                  d-flex
-                  align-items-center
-                  flex-column flex-xl-row
-                  text-center text-md-left
-                "
-              >
-                <h6 class="h5 p-1 mx-3 my-2 my-xl-0"><%= skjema.ordnr %></h6>
-              </div>
-              <div
-                class="
-                  col-xl-6
-                  d-flex
-                  align-items-center
-                  flex-column flex-xl-row
-                  text-center text-md-left
-                "
-              >
-                <h6 class="h5 p-1 mx-3 my-2 my-xl-0">Beskrivelse:</h6>
-                <p class="mb-0 mt-3 mt-lg-0 fifty"><%= skjema.beskrivelse %></p>
+              <div class="chartjs-size-monitor-shrink">
+                <div class=""></div>
               </div>
             </div>
-          </a>
+            <canvas
+              class="w-100 chartjs-render-monitor"
+              id="lineChart1"
+              width="469"
+              height="234"
+              ></canvas>
+            <!-- <canvas
+              class="w-100 chartjs-render-monitor"
+              id="lineChart1"
+              width="469"
+              height="234"
+              ></canvas> -->
+          </div>
         </div>
-      </li>
-      <% } %>
+      </div>
     </div>
-  </ul>
+    <div class="col-lg-5 mb-4 mb-lg-0">
+      <div class="h-50 pb-4 pb-lg-2">
+        <div class="card h-100">
+          <div class="card-body d-flex">
+            <div class="row w-100 align-items-center">
+              <div class="col-sm-5 mb-4 mb-sm-0">
+                <h2 class="mb-0 d-flex align-items-center">
+                  <span><%= solved %> </span
+                  ><span class="dot bg-green d-inline-block ms-3"></span>
+                </h2>
+                <span class="text-muted text-uppercase small">Løste saker</span>
+                <hr />
+                <small class="text-muted"
+                  >Hvor mange saker løst i forhold til alle saker. Denne statistikken bruker reklamasjoner siden tidenes morgen.</small
+                >
+              </div>
+              <div class="col-sm-7">
+                <div class="chartjs-size-monitor">
+                  <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                  </div>
+                </div>
+                <canvas
+                  id="pieChartSolved"
+                  width="157"
+                  height="78"
+                  style="display: block; width: 157px; height: 78px"
+                  class="chartjs-render-monitor"
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-50 pt-lg-2">
+        <div class="card h-100">
+          <div class="card-body d-flex">
+            <div class="row w-100 align-items-center">
+              <div class="col-sm-5 mb-4 mb-sm-0">
+                <h2 class="mb-0 d-flex align-items-center">
+                  <span><%= finished %> </span
+                  ><span class="dot bg-green d-inline-block ms-3"></span>
+                </h2>
+                <span class="text-muted text-uppercase small"
+                  >Innen tidsfrist</span
+                >
+                <hr />
+                <small class="text-muted"
+                  >Hvor mange saker ble løst innen tidsfristen på 2 uker. Denne statistikken bruker reklamasjoner siden tidenes morgen.</small
+                >
+              </div>
+              <div class="col-sm-7">
+                <div class="chartjs-size-monitor">
+                  <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                  </div>
+                </div>
+                <canvas
+                  id="pieChartFinishedInTime"
+                  width="157"
+                  height="78"
+                  class="chartjs-render-monitor"
+                  ></canvas>
+                  <!-- style="display: block; width: 157px; height: 78px" -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script src="/vendor/chart.js/Chart.min.js"></script>
+<script src="/js/charts-defaults.js"></script>
+<script id="chartScript" finishedData="<%= finished %>, <%= solved - finished %>" solvedData="<%= solved %>, <%= unsolved %> " chartData="<%= m0Reklamasjoner %>, <%= m1Reklamasjoner %>, <%= m2Reklamasjoner %>, <%= m3Reklamasjoner %>, <%= m4Reklamasjoner %>, <%= m5Reklamasjoner %>, <%= m6Reklamasjoner %>, <%= m7Reklamasjoner %>, <%= m8Reklamasjoner %>, <%= m9Reklamasjoner %>, <%= m10Reklamasjoner %>, <%= m11Reklamasjoner %>" src="/js/charts-home.js"></script>

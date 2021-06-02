@@ -1,5 +1,5 @@
 
-    <% const permission = (currentuser._id.toString() == bruker._id.toString() || currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler" ) %> 
+    <% const permission = ((bruker.rolle.toString() == "ansatt" || bruker._id.toString() == currentuser._id.toString()) &&(currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler")) %> 
     <!-- Breadcrumbs -->
     <div class="page-breadcrumb">
       <ul class="breadcrumb">
@@ -34,7 +34,7 @@
                       value="<%= bruker.name %>"
                       required
                       <% if(currentuser._id.toString() == bruker._id.toString()) %> 
-                      <%= permission? "": "disabled" %>
+                      <%= currentuser._id.toString() == bruker._id.toString() || permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -48,7 +48,7 @@
                       name="telefon"
                       value="<%= bruker.telefon %>"
                       required
-                      <%= permission? "": "disabled" %>
+                      <%= currentuser._id.toString() == bruker._id.toString() || permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                       name="username"
                       value="<%= bruker.username %>"
                       required
-                      <%= permission? "": "disabled" %>
+                      <%= currentuser._id.toString() == bruker._id.toString() || permission? "": "disabled" %>
                     />
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                         value="true"
                         required
                         <%= bruker.sex == "true" ? "checked": "" %>
-                        <%= permission? "": "disabled" %>
+                        <%= currentuser._id.toString() == bruker._id.toString() || permission? "": "disabled" %>
                       />
                       <label class="custom-control-label" for="customRadioInline1"
                         >Mann</label
@@ -94,7 +94,7 @@
                         value="false"
                         required
                         <%= bruker.sex == "false" ? "checked": "" %>
-                        <%= permission? "": "disabled" %>
+                        <%= currentuser._id.toString() == bruker._id.toString() || permission? "": "disabled" %>
                       />
                       <label class="custom-control-label" for="customRadioInline2"
                         >Kvinne</label
@@ -106,9 +106,9 @@
                 <div class="row">
                   <label class="col-md-3 form-label">Rolle</label>
                   <div class="col-md-9 ms-auto select">
-                    <% if(currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler") {  %> 
-                    <select class="form-control rounded" name="rolle" required> <% } else { %>
-                      <select class="form-control rounded" name="rolle" required disabled> <% } %> 
+                    <% if((bruker.rolle.toString() == "ansatt" || bruker._id.toString() == currentuser._id.toString()) &&(currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler")) {  %> 
+                    <select class="form-select rounded" name="rolle" required> <% } else { %>
+                      <select class="form-select rounded" name="rolle" required disabled> <% } %> 
                       <option value="ansatt" <%= bruker.rolle == "ansatt" ? "selected": "" %>>Ansatt</option>
                       <option value="admin" <%= bruker.rolle == "admin" ? "selected": "" %>>Admin</option>
                       <option value="utvikler" <%= bruker.rolle == "utvikler" ? "selected": "" %>>Utvikler</option>
@@ -131,7 +131,7 @@
               </form>
             </div>
           </div>
-          <% if(permission) { %> 
+          <% if(currentuser._id.toString() == bruker._id.toString() || (bruker.rolle.toString() == "ansatt" || bruker._id.toString() == currentuser._id.toString()) &&(currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler")) { %> 
           <div class="card mt-4">
             <div class="card-header">
               <h4 class="card-heading">Endre passord:</h4>
@@ -166,7 +166,7 @@
             </div>
           </div>
           <% }; %> 
-          <% if((currentuser.rolle.toString() == "admin" && currentuser._id.toString() != bruker._id.toString())|| currentuser.rolle.toString() == "utvikler") { %> 
+          <% if(( currentuser.rolle.toString() == "admin" || currentuser.rolle.toString() == "utvikler" ) && bruker.rolle.toString() == "ansatt" && currentuser._id.toString() != bruker._id.toString()) { %> 
 
           <div class="card mt-4">
             <div class="card-header">
