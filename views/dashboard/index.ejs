@@ -62,7 +62,7 @@
           <hr class="bg-gray-400 my-4">
           <div class="row">
             <div class="col-3">
-              <%= note.date.getDate() %> / <%= note.date.getMonth() %> / <%= note.date.getFullYear() %> - <%= note.username %> 
+              <%= note.date.getDate() %> / <%= note.date.getMonth() +1 %> / <%= note.date.getFullYear() %> - <%= note.username %> 
             </div>
             <div class="col-8">
               <%= note.content %> 
@@ -123,7 +123,7 @@
                 <span class="text-muted text-uppercase small">Løste saker</span>
                 <hr />
                 <small class="text-muted"
-                  >Hvor mange saker løst i forhold til alle saker. Denne statistikken bruker reklamasjoner siden tidenes morgen.</small
+                  >Hvor mange saker løst i forhold til alle saker.</small
                 >
               </div>
               <div class="col-sm-7">
@@ -161,7 +161,7 @@
                 >
                 <hr />
                 <small class="text-muted"
-                  >Hvor mange saker ble løst innen tidsfristen på 2 uker. Denne statistikken bruker reklamasjoner siden tidenes morgen.</small
+                  >Hvor mange saker ble løst innen tidsfristen på 2 uker.</small
                 >
               </div>
               <div class="col-sm-7">

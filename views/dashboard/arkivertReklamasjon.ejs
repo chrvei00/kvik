@@ -5,7 +5,7 @@
 <section class="mb-4">
   <div class="px-5 py-3 mb-4">
     <div class="row">
-      <div class="col-12 col-lg-8">
+      <div class="col-12 col-lg-6">
         <div class="input-group flex-nowrap">
           <select class="form-select" id="searchFilter">
             <option value="" selected>Alt</option>
@@ -87,7 +87,7 @@
               >
                 <span class="mb-0 text-muted">
                   <%= skjema.reklamasjonsDate.getDate() %> /
-                  <%=skjema.reklamasjonsDate.getMonth() %> /
+                  <%=skjema.reklamasjonsDate.getMonth() +1 %> /
                   <%=skjema.reklamasjonsDate.getFullYear() %>
                 </span>
               </div>

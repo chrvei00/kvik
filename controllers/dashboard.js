@@ -7,7 +7,7 @@ const { eError, catchAsync } = require("../middleware/error");
 
 //DB Imports and setup
 module.exports.setUp = catchAsync(async (req, res, next) => {
-  res.locals.indexNotes = await indexNoteModel.find();
+  res.locals.indexNotes = await (await indexNoteModel.find()).reverse();
   res.locals.currentuser = req.user;
   res.locals.layout = "dashLayout";
   res.locals.page = "oversikt";

@@ -12,7 +12,6 @@ module.exports.catchError = (err, req, res, next) => {
   if (!err.msg) err.msg = "Error";
   if (!err.code) err.code = 505;
   console.log(err.msg, err.code);
-  console.log(err);
   //Catch specific errors
 
   res.status(err.code).render("./error/template.ejs", { error: err });

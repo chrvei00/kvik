@@ -1,19 +1,16 @@
 //Node modules
 const passport = require("passport");
+const { catchAsync } = require("../middleware/error");
 //Models
 const User = require("../models/userModel");
 
 module.exports.renderLogin = (req, res) => {
   if (req.isAuthenticated()) {
-    res.redirect("/dashboard");
-    return;
+    res.locals.isLoggedIn = true;
+  } else {
+    res.locals.isLoggedIn = false;
   }
   res.render("auth/signIn.ejs");
-};
-
-module.exports.redirectOnAuth = (req, res) => {
-  req.flash("success", "Velkommen tilbake!");
-  res.redirect("/dashboard");
 };
 
 module.exports.logOut = (req, res) => {
@@ -24,6 +21,7 @@ module.exports.logOut = (req, res) => {
 
 //Middleware
 module.exports.authenticate = passport.authenticate("local", {
-  failureRedirect: "/dashboard",
-  failureFlash: true,
+  failureRedirect: "/",
+  failureFlash: "Feil brukernavn eller passord.",
+  successRedirect: "/dashboard",
 });

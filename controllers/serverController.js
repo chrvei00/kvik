@@ -38,7 +38,11 @@ module.exports.findReklamasjoner = catchAsync(async (req, res, next) => {
 module.exports.helmetCSPOptions = {
   useDefaults: true,
   directives: {
-    "img-src": ["'self' data:", "https://res.cloudinary.com/"],
+    "img-src": [
+      "'self' data:",
+      "http://www.w3.org/",
+      "https://res.cloudinary.com/",
+    ],
     "style-src": [
       "'self'",
       "'unsafe-inline'",
@@ -54,6 +58,7 @@ module.exports.helmetCSPOptions = {
       "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js",
       "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
       "https://www.google.com/",
+      "http://www.w3.org/",
     ],
     "frame-src": [
       "https://www.google.com/recaptcha/",

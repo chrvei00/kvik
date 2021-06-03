@@ -112,3 +112,10 @@ function kopierLink() {
   reklamasjonLink.setSelectionRange(0, 99999);
   document.execCommand("copy");
 }
+
+Prism.plugins.NormalizeWhitespace.setDefaults({
+  "remove-trailing": true,
+  "remove-indent": true,
+  "left-trim": true,
+  "right-trim": true,
+});

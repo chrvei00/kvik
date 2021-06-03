@@ -18,6 +18,17 @@
             </button>
           </div>
         </form>
+        <% if(isLoggedIn) { %>
+        <form method="get" action="/dashboard">
+          <h1 class="h4 text-uppercase mb-5">Du er allerede logget inn.</h1>
+          <!-- Submit-->
+          <div class="d-grid mb-5">
+            <button class="btn btn-success text-uppercase text-white">
+              <strong>Gå til dashboard</strong>
+            </button>
+          </div>
+        </form>
+        <% } else { %>
         <form method="POST" action="/auth" class="needs-validation" novalidate>
           <h1 class="h4 text-uppercase pt-5 mb-5">Log in</h1>
           <div class="mb-3">
@@ -48,6 +59,7 @@
             </button>
           </div>
         </form>
+        <% } %>
       </div>
     </div>
     <div class="col-lg-8 d-none d-md-block">

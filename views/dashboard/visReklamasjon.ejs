@@ -25,10 +25,10 @@
                   Status: <%= reklamasjon.status ? "Arkivert": "Åpen"; %>
                 </div>
                 <div class="col my-auto">
-                  Reklamasjon åpnet: <span class="mx-2"><%= reklamasjon.reklamasjonsDate.getDate() %> / <%=reklamasjon.reklamasjonsDate.getMonth() %> / <%=reklamasjon.reklamasjonsDate.getFullYear() %></span>
+                  Reklamasjon åpnet: <span class="mx-2"><%= reklamasjon.reklamasjonsDate.getDate() %> / <%=reklamasjon.reklamasjonsDate.getMonth()+1 %> / <%=reklamasjon.reklamasjonsDate.getFullYear() %></span>
                 </div>
                 <div class="col my-auto">
-                  Forventet ferdig: <span class="mx-2"><%= reklamasjon.expectedFinished.getDate() %> / <%=reklamasjon.expectedFinished.getMonth() %> / <%=reklamasjon.expectedFinished.getFullYear() %></span>
+                  Forventet ferdig: <span class="mx-2"><%= reklamasjon.expectedFinished.getDate() %> / <%=reklamasjon.expectedFinished.getMonth()+1 %> / <%=reklamasjon.expectedFinished.getFullYear() %></span>
                 </div>
                 <div class="col-3">
                   <form class="my-auto" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST"><button class="btn btn-<%= reklamasjon.status ? "success": "danger"; %> text-white"> Endre status </button></form>
@@ -71,7 +71,7 @@
               <hr class="bg-gray-400 my-4">
               <div class="row">
                 <div class="col-3">
-                  <%= note.date.getDate() %> / <%= note.date.getMonth() %> / <%= note.date.getFullYear() %> - <%= note.username %> 
+                  <%= note.date.getDate() %> / <%= note.date.getMonth() +1 %> / <%= note.date.getFullYear() %> - <%= note.username %> 
                 </div>
                 <div class="col-8">
                   <%= note.content %> 
@@ -140,7 +140,7 @@
                   Kjøpsdato:
                 </div>
                 <div class="col">
-                  <%= reklamasjon.orderDate.getDate() %> / <%=reklamasjon.orderDate.getMonth() %> / <%=reklamasjon.orderDate.getFullYear() %> 
+                  <%= reklamasjon.orderDate.getDate() %> / <%=reklamasjon.orderDate.getMonth() +1 %> / <%=reklamasjon.orderDate.getFullYear() %> 
                 </div>
               </div>
               <div class="row mb-2">

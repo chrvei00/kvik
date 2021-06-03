@@ -23,6 +23,7 @@ module.exports.findReklamasjoner = catchAsync(async (req, res, next) => {
 module.exports.findReklamasjon = catchAsync(async (req, res, next) => {
   const reklamasjon = await reklamasjonForm.findById(req.params.id);
   res.locals.reklamasjon = reklamasjon;
+  res.locals.reklamasjon.notes.reverse();
   next();
 });
 

@@ -11,7 +11,7 @@ const { validateLogin } = require("../middleware/validate");
 router
   .route("/")
   .get(controller.renderLogin)
-  .post(validateLogin, controller.authenticate, controller.redirectOnAuth);
+  .post(validateLogin, controller.authenticate);
 
 router.get("/logout", isLoggedIn, controller.logOut);
 

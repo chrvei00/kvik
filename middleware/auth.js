@@ -1,6 +1,6 @@
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
-    req.flash("error", "Feil brukernavn eller passord.");
+    req.flash("error", "Du må logge inn.");
     return res.redirect("/auth");
   }
   next();
@@ -13,7 +13,6 @@ module.exports.isAdmin = (req, res, next) => {
   ) {
     next();
   } else {
-    req.flash("error", "Feil brukernavn eller passord.");
     return res.redirect("/dashboard");
   }
 };

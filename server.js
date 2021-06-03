@@ -82,7 +82,7 @@ app.use(expressLayout);
 
 //  Index
 app.get("/", (req, res) => {
-  res.redirect("/dashboard");
+  res.redirect("/auth");
 });
 //  Reklamasjon
 const reklamasjonRoute = require("./routes/reklamasjonRoute");
