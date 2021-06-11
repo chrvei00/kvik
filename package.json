@@ -13,8 +13,8 @@
     "url": "git+https://github.com/chrvei00/kvikFeedbackProsjekt.git"
   },
   "engines": {
-    "node": "14.17.0",
-    "npm": "6.14.13"
+    "node": "v14.0.0",
+    "npm": "6.x"
   },
   "keywords": [],
   "author": "Christian Veiby",
