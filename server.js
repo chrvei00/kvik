@@ -104,7 +104,7 @@ app.all("*", (req, res, next) => {
 //  ErrorMiddleware
 app.use(catchError);
 
-//Launch
+//Ready for Launch
 const port = process.env.PORT || 80;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
