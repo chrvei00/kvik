@@ -52,6 +52,10 @@ const reklamasjonFormSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  underConstruction: {
+    type: Boolean,
+    default: false,
+  },
   expectedFinished: {
     type: Date,
     default: Date.now() + 12096e5,

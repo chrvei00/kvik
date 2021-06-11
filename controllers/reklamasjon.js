@@ -12,9 +12,7 @@ module.exports.sendReklamasjon = catchAsync(async (req, res, next) => {
   // //Parse input
   const form = new reklamasjonForm(req.body.reklamasjon);
   form.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
-  console.log(form.caseNumber);
   form.caseNumber = await getLastandIncrement(form.store);
-  console.log(form.caseNumber);
   //Save to DB
   await form.save();
   req.flash("success", "Sendt!");

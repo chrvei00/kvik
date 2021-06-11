@@ -44,16 +44,35 @@ module.exports.renderUferdigReklamasjoner = (req, res) => {
 
 module.exports.renderReklamasjon = catchAsync(async (req, res, next) => {
   if (res.locals.reklamasjon.status) {
+    res.locals.status = "Arkivert"
     res.locals.page = "arkivertReklamasjon";
   } else {
+    if (res.locals.reklamasjon.underConstruction) {
+      res.locals.status = "Under arbeid"
+    } else {
+      res.locals.status = "Åpen"
+    }
     res.locals.page = "uferdigReklamasjon";
   }
   res.render("dashboard/visReklamasjon.ejs");
 });
 
 module.exports.updateReklamasjon = catchAsync(async (req, res, next) => {
+  console.log(req.query)
+  q = req.query.status;
   reklamasjon = await reklamasjonForm.findById(req.params.id);
-  reklamasjon.status = !reklamasjon.status;
+  if (q == "arkiver") {
+    reklamasjon.status = true;
+    reklamasjon.underConstruction = false;
+  } else if(q == "underArbeid") {
+    reklamasjon.status = false;
+    reklamasjon.underConstruction = true;
+  } else {
+    reklamasjon.status = false;
+    reklamasjon.underConstruction = false;
+  };
+  console.log(reklamasjon.status);
+  console.log(reklamasjon.underConstruction);
   if (reklamasjon.status) {
     reklamasjon.finished = Date.now();
     if (reklamasjon.finished < reklamasjon.expectedFinished) {

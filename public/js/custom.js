@@ -12,6 +12,20 @@ if (document.getElementById("filter")) {
   });
 }
 
+if (document.getElementById("sortOrder")) {
+  document.getElementById("sortOrder").addEventListener("change", () => {
+    searchFilter();
+    filter();
+  });
+}
+
+if (document.getElementById("sortStore")) {
+  document.getElementById("sortStore").addEventListener("change", () => {
+    searchFilter();
+    filter();
+  });
+}
+
 if (document.getElementById("resetFilter")) {
   document.getElementById("resetFilter").addEventListener("click", resetFilter);
 }

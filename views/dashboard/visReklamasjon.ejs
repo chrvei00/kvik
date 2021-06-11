@@ -22,17 +22,24 @@
           <div class="card-body">
               <div class="row">
                 <div class="col-2 my-auto">
-                  Status: <%= reklamasjon.status ? "Arkivert": "Åpen"; %>
+                  Status: <%= status %>
                 </div>
-                <div class="col my-auto">
+                <div class="col my-auto ">
                   Reklamasjon åpnet: <span class="mx-2"><%= reklamasjon.reklamasjonsDate.getDate() %> / <%=reklamasjon.reklamasjonsDate.getMonth()+1 %> / <%=reklamasjon.reklamasjonsDate.getFullYear() %></span>
                 </div>
                 <div class="col my-auto">
                   Forventet ferdig: <span class="mx-2"><%= reklamasjon.expectedFinished.getDate() %> / <%=reklamasjon.expectedFinished.getMonth()+1 %> / <%=reklamasjon.expectedFinished.getFullYear() %></span>
                 </div>
-                <div class="col-3">
-                  <form class="my-auto" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT" method="POST"><button class="btn btn-<%= reklamasjon.status ? "success": "danger"; %> text-white"> Endre status </button></form>
+                <div class="col-4">
+                  <div class="row">
+                    <div class="col my-auto">
+                  <form class="" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?_method=PUT&status=uferdig" method="post"><button class="text-white btn <%= status == "Åpen" ? "btn-danger": "btn-secondary" %>" type="submit">Åpen</button></form></div>
+                    <div class="col my-auto mx-0">
+                  <form class="" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?status=underArbeid&_method=PUT" method="post"><button class="text-white btn <%= status == "Under arbeid" ? "btn-warning": "btn-secondary" %>" type="submit">Under arbeid</button></form></div>
+                    <div class="col my-auto">
+                  <form class="" action="/dashboard/reklamasjoner/<%= reklamasjon._id %>?status=arkiver&_method=PUT" method="post"><button class="text-white btn <%= status == "Arkivert" ? "btn-success": "btn-secondary" %>" type="submit">Arkivert</button></form></div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -148,7 +155,7 @@
                   Montering av kvik:
                 </div>
                 <div class="col">
-                  <%= reklamasjon.assembly %> 
+                  <%= reklamasjon.assembly ? "Ja": "Nei";%> 
                 </div>
               </div>
               <div class="row mb-2">

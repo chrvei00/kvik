@@ -44,8 +44,7 @@ module.exports.helmetCSPOptions = {
       "https://res.cloudinary.com/",
     ],
     "style-src": [
-      "'self'",
-      "'unsafe-inline'",
+      "'self' 'unsafe-inline'",
       "'nonce-gReCaptcha'",
       "https://fonts.googleapis.com/",
       "https://use.fontawesome.com/releases/v5.7.1/css/all.css",
