@@ -1,6 +1,6 @@
 {
   "name": "kvikfeedbackprosjekt",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Feedback-form for kvik",
   "main": "server.js",
   "scripts": {
