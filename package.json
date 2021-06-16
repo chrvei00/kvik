@@ -1,6 +1,6 @@
 {
   "name": "kvikfeedbackprosjekt",
-  "version": "0.0.1",
+  "version": "14.6.0",
   "description": "Feedback-form for kvik",
   "main": "server.js",
   "scripts": {
@@ -11,10 +11,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chrvei00/kvikFeedbackProsjekt.git"
-  },
-  "engines": {
-    "node": "v14.0.0",
-    "npm": "6.x"
   },
   "keywords": [],
   "author": "Christian Veiby",
