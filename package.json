@@ -1,12 +1,16 @@
 {
   "name": "kvikfeedbackprosjekt",
-  "version": "14.6.0",
+  "version": "14.17.0",
   "description": "Feedback-form for kvik",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "devStart": "nodemon server.js"
+  },
+  "engines": {
+    "node": "v14.17.0",
+    "npm": "6.14.13"
   },
   "repository": {
     "type": "git",
