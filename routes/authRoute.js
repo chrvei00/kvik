@@ -8,11 +8,11 @@ const { isLoggedIn } = require("../middleware/auth");
 const { validateLogin } = require("../middleware/validate");
 
 //Routes
+router.post("/register", controller.register);
+router.get("/logout", isLoggedIn, controller.logOut);
 router
   .route("/")
   .get(controller.renderLogin)
   .post(validateLogin, controller.authenticate);
-
-router.get("/logout", isLoggedIn, controller.logOut);
 
 module.exports = router;

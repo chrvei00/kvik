@@ -13,7 +13,6 @@ const app = express();
 const session = require("express-session");
 //  MONGO
 const mongoose = require("mongoose");
-const mongoStore = require("connect-mongo");
 //  SECURITY
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -42,10 +41,13 @@ const { eError, catchError } = require("./middleware/error");
 //App INIT
 
 //  Database init
-mongoose.connect(process.env.DB_URL, controller.mongoOptions);
+const dbUrl =
+  "mongodb+srv://admin:admin@cluster0.hz1aa.mongodb.net/mydatabase?retryWrites=true&w=majority";
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+
 mongoose.connection
   .on("error", (error) => {
-    throw new eError(error, 500);
+    throw new Error(error);
   })
   .once("open", () => {
     console.log("Connected to database");
@@ -53,10 +55,12 @@ mongoose.connection
 
 //  Express setup
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public"), controller.staticOptions));
+app.use(
+  express.static(path.join(__dirname, "public"), controller.staticOptions)
+);
 app.use(session(controller.sessionOptions));
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //  Security
 app.use(helmet());
@@ -89,7 +93,7 @@ const reklamasjonRoute = require("./routes/reklamasjonRoute");
 app.use("/reklamasjon", reklamasjonRoute);
 //  Dashboard
 const dashboardRoute = require("./routes/dashboardRoute");
-app.use("/dashboard", isLoggedIn, dashboardRoute);
+app.use("/dashboard", dashboardRoute);
 //  Auth
 const authRoute = require("./routes/authRoute");
 app.use("/auth", authRoute);

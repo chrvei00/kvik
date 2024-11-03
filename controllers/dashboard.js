@@ -20,6 +20,7 @@ module.exports.redirectDashboard = (req, res) => {
 };
 
 module.exports.renderIndex = catchAsync(async (req, res, next) => {
+  console.log("Rendering index");
   const reklamasjoner = await reklamasjonForm.find();
   res.locals.solved = 0;
   res.locals.unsolved = 0;

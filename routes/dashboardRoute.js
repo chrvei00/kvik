@@ -11,7 +11,6 @@ router.use(controller.setUp);
 //Subroutes
 const usersSubRoute = require("./subRoutes/usersDash");
 const reklamasjonerSubRoute = require("./subRoutes/reklamasjonerDash");
-const { route } = require("./subRoutes/usersDash");
 
 //Routes
 router.get("/", controller.renderIndex);
